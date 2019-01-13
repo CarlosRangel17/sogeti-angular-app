@@ -1,0 +1,43 @@
+<mat-toolbar class="mat-toolbar-tech primary-dark-bg">
+  <mat-chip-list>
+    <mat-chip 
+        *ngFor="let category of categories"
+        (click)="selectCategory(category)"
+        [class.success-bg]="category.selected"
+        [selected]="category.selected">{{ category.name }} </mat-chip> 
+  </mat-chip-list>
+</mat-toolbar>
+
+<mat-toolbar class="mat-toolbar-nav" color="primary">
+<mat-toolbar-row class="nav-row">
+    <a class="toolbar-logo" mat-button [routerLink]="['/']">
+      <img mat-card-image src="../assets/images/sogeti-logo.png" alt="Photo of a Sogeti Logo">
+    </a>
+      <span class="toolbar-space"></span>
+      <mat-card class="toolbar-routes">
+
+        <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+        <mat-menu #menu="matMenu">
+          <button 
+            *ngFor="let link of links" 
+            mat-menu-item
+            [routerLink]="link.path"
+            [routerLinkActive]="['mat-button-toggle-checked', 'active-route']"
+            [routerLinkActiveOptions]="{ exact: true }"
+            #rla="routerLinkActive">
+            {{ link.label }}            
+          </button>
+        </mat-menu>
+        <a 
+          class="link"
+          mat-button 
+          *ngFor="let link of links" 
+          [routerLink]="link.path"
+          [routerLinkActive]="['mat-button-toggle-checked', 'active-route']"
+          [routerLinkActiveOptions]="{ exact: true }"
+          #rla="routerLinkActive">
+          {{ link.label }}            
+        </a>
+      </mat-card>
+  </mat-toolbar-row>
+</mat-toolbar>

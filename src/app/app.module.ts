@@ -14,27 +14,35 @@ import { CompanyComponent } from './company/company.component';
 import { HomeComponent } from './home/home.component';
 import { RegulatorComponent } from './regulator/regulator.component';
 import { ConsultantComponent } from './consultant/consultant.component';
-import { SideNavComponent } from './side-nav/side-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import { TopNavComponent } from './top-nav/top-nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardMenuBoxComponent,
     NavComponent,
+    TopNavComponent,
     NotFoundComponent,
     MarketComponent,
     ClientComponent,
     CompanyComponent,
     HomeComponent,
     RegulatorComponent,
-    ConsultantComponent,
-    SideNavComponent
+    ConsultantComponent
   ],
   imports: [
     BrowserModule,
     RoutingModule,
     BrowserAnimationsModule,
-    MatComponentsModule
+    MatComponentsModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
