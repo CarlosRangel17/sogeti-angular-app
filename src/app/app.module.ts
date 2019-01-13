@@ -14,6 +14,7 @@ import { CompanyComponent } from './company/company.component';
 import { HomeComponent } from './home/home.component';
 import { RegulatorComponent } from './regulator/regulator.component';
 import { ConsultantComponent } from './consultant/consultant.component';
+import { SideNavComponent } from './side-nav/side-nav.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ConsultantComponent } from './consultant/consultant.component';
     CompanyComponent,
     HomeComponent,
     RegulatorComponent,
-    ConsultantComponent
+    ConsultantComponent,
+    SideNavComponent
   ],
   imports: [
     BrowserModule,

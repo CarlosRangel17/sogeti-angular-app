@@ -9,14 +9,14 @@ import { RegulatorComponent } from '../regulator/regulator.component';
 import { ConsultantComponent } from '../consultant/consultant.component';
 
 const routes: Routes = [
-  { 
+  {
     path: '',
     component: HomeComponent,
     data: {
-      label: 'Home'
-    } 
+      label: 'Home',
+    }
   },
-  { 
+  {
     path: 'home',
     component: HomeComponent,
   },
@@ -27,34 +27,45 @@ const routes: Routes = [
       label: 'Regulator'
     }
   },
-  { 
+  {
     path: 'market',
     component: MarketComponent,
   },
-  { 
+  {
     path: 'consultant',
     component: ConsultantComponent,
     data: {
-      label: 'Consultant'
-    } 
+      label: 'Consultant',
+      sublinks: [
+        'dashboard'
+      ]
+    }
   },
-  { 
+  {
     path: 'client',
     component: ClientComponent,
     data: {
-      label: 'Client'
-    } 
+      label: 'Client',
+      sublinks: [
+        'market',
+        'dashboard'
+      ]
+    }
   },
-  { 
+  {
     path: 'company',
     component: CompanyComponent,
     data: {
-      label: 'Company'
-    } 
+      label: 'Company',
+      sublinks: [
+        'market',
+        'dashboard'
+      ]
+    }
   },
-  { 
+  {
     path: '**',
-    component: NotFoundComponent 
+    component: NotFoundComponent
   },
 ];
 

@@ -17,7 +17,6 @@
 /* #region global styles */
 .active-route {
     color: #fff;
-    font-weight: bold;
 }
 
 .primary-dark-bg {
@@ -32,6 +31,12 @@
 /* #endregion */
 
 /* #region mat defaults (override) */
+a.link:hover:not(.active-route) {
+    border: none;
+    color: $accent;
+    transition: .5s;
+}
+
 .mat-toolbar .mat-toolbar-row {
     margin-left: auto;
     margin-right: auto;
@@ -44,6 +49,8 @@
 .toolbar-space {
     flex: 1 1 auto;
 }
+
+.mat-toolbar
 /* #endregion */ 
 
 /* #region toolbar tech (top) */ 
@@ -53,6 +60,10 @@
 
 .mat-toolbar-tech .mat-chip-list  {
     margin: 5px;
+}
+
+.mat-chip {
+    cursor: pointer;
 }
 /* #endregion */
 
