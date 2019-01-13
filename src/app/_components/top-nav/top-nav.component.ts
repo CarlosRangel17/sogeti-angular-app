@@ -18,12 +18,12 @@ export class TopNavComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    for(const route of this.router.config){
-      if(route.data && route.data.label){
+    for (const route of this.router.config) {
+      if (route.data && route.data.label) {
         this.links.push({
           path: '/' + route.path,
           label: route.data.label
-        })
+        });
       }
     }
 
@@ -32,7 +32,7 @@ export class TopNavComponent implements OnInit {
 
   selectCategory(category) {
     this.categories
-      .filter(c => c != category)
+      .filter(c => c !== category)
       .forEach(c => c['selected'] = false);
 
       category.selected = !category.selected;

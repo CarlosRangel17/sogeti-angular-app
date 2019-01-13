@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { NotFoundComponent } from '../not-found/not-found.component';
-import { MarketComponent } from '../market/market.component';
-import { ClientComponent } from '../client/client.component';
-import { CompanyComponent } from '../company/company.component';
-import { HomeComponent } from '../home/home.component';
-import { RegulatorComponent } from '../regulator/regulator.component';
-import { ConsultantComponent } from '../consultant/consultant.component';
+import { NotFoundComponent } from '../_components/not-found/not-found.component';
+import { MarketComponent } from '../_components/market/market.component';
+import { ClientComponent } from '../_components/client/client.component';
+import { CompanyComponent } from '../_components/company/company.component';
+import { HomeComponent } from '../_components/home/home.component';
+import { RegulatorComponent } from '../_components/regulator/regulator.component';
+import { ConsultantComponent } from '../_components/consultant/consultant.component';
 
 const routes: Routes = [
   {

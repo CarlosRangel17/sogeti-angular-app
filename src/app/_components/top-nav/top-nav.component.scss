@@ -1,5 +1,5 @@
 /* Import _variables.css to the component's sass file where you want to use it. */
-@import "../../variables";
+@import "../../../variables";
 
 /* #region sass functions */
 @mixin container-align($padding) {
