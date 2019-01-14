@@ -14,6 +14,7 @@ const routes: Routes = [
     component: HomeComponent,
     data: {
       label: 'Home',
+      icon: '<add icon info here>'
     }
   },
   {
@@ -24,7 +25,8 @@ const routes: Routes = [
     path: 'regulator',
     component: RegulatorComponent,
     data: {
-      label: 'Regulator'
+      label: 'Regulator',
+      icon: '<add icon info here>'
     }
   },
   {
@@ -36,6 +38,7 @@ const routes: Routes = [
     component: ConsultantComponent,
     data: {
       label: 'Consultant',
+      icon: '<add icon info here>',
       sublinks: [
         'dashboard'
       ]
@@ -46,6 +49,7 @@ const routes: Routes = [
     component: ClientComponent,
     data: {
       label: 'Client',
+      icon: '<add icon info here>',
       sublinks: [
         'market',
         'dashboard'
@@ -57,6 +61,7 @@ const routes: Routes = [
     component: CompanyComponent,
     data: {
       label: 'Company',
+      icon: '<add icon info here>',
       sublinks: [
         'market',
         'dashboard'
