@@ -3,9 +3,10 @@
     <mat-chip 
         *ngFor="let category of categories"
         (click)="selectCategory(category)"
-        [class.success-bg]="category.selected"
+        [class.accent-bg]="category.selected"
         [selected]="category.selected">{{ category.name }} </mat-chip> 
-  </mat-chip-list>
+        <!-- [class.success-bg]="category.selected" -->
+      </mat-chip-list>
 </mat-toolbar>
 
 <mat-toolbar class="mat-toolbar-nav" color="primary">
@@ -16,7 +17,10 @@
       <span class="toolbar-space"></span>
       <mat-card class="toolbar-routes">
 
-        <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+        
+        <button mat-button [matMenuTriggerFor]="menu">
+            <mat-icon>apps</mat-icon>
+        </button>
         <mat-menu #menu="matMenu">
           <button 
             *ngFor="let link of links" 
