@@ -17,14 +17,12 @@ import { HomeComponent } from './_components/home/home.component';
 import { RegulatorComponent } from './_components/regulator/regulator.component';
 import { ConsultantComponent } from './_components/consultant/consultant.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { TopNavComponent } from './_components/top-nav/top-nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardMenuBoxComponent,
     NavComponent,
-    TopNavComponent,
     NotFoundComponent,
     MarketComponent,
     ClientComponent,
