@@ -60,7 +60,7 @@ a.link:hover:not(.active-route) {
 }
 
 .mat-toolbar.mat-toolbar-nav[_ngcontent-c1] {
-    padding: 10px 250px;
+    padding: 10px 150px;
 }
 /* #endregion */ 
 
@@ -72,7 +72,7 @@ a.link:hover:not(.active-route) {
   }
 
 .mat-toolbar.mat-toolbar-tech {
-    @include container-align(0px 250px);
+    @include container-align(0px 150px);
 }
 
 .mat-toolbar-tech .mat-chip-list  {
