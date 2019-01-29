@@ -22,5 +22,10 @@ $warn: mat-color($app-warn);
 $warn-light: mat-color($app-warn, lighter);
 $warn-dark: mat-color($app-warn, darker);
 
+// Secondary 
+$secondary: mat-color($mat-red, 500);
+$secondary-light: mat-color($mat-red, 100);
+$secondary-dark: mat-color($mat-red, 900);
+
 // Misc 
 $success: mat-color($mat-light-green, 500);

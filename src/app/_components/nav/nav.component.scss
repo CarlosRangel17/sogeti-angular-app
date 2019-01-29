@@ -38,7 +38,7 @@
 /* #region mat defaults (override) */
 a.link:hover:not(.active-route) {
     border: none;
-    color: $primary-dark;
+    color: $secondary-dark;
     transition: .5s;
 }
 
@@ -48,7 +48,7 @@ a.link:hover:not(.active-route) {
 }
 
 .mat-button-toggle-checked {
-    background-color: #FF412F;
+    background-color: $secondary;
 }
 
 .toolbar-space {
