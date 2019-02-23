@@ -33,35 +33,53 @@
     background-color: $success !important;
     color: #fff;
 }
+
+.logo-image{
+    padding: 5px;
+    background: #fff;
+    border-radius: 5px !important;
+    margin-top: 5px !important;
+}
 /* #endregion */
 
 /* #region mat defaults (override) */
+.mat-card-image{
+    margin: 0;
+}
+
 a.link:hover:not(.active-route) {
     border: none;
-    color: $secondary-dark;
+    color: $secondary;
     transition: .5s;
 }
 
-.mat-toolbar .mat-toolbar-row {
-    margin-left: auto;
-    margin-right: auto;
+.menu-span {
+    padding: 5px 10px;
+    background: #fff;
+    color: $primary-dark;
+    border-radius: 25px;
 }
+
+// .mat-toolbar .mat-toolbar-row {
+//     margin-left: auto;
+//     margin-right: auto;
+// }
 
 .mat-button-toggle-checked {
     background-color: $secondary;
 }
 
-.toolbar-space {
-    flex: 1 1 auto;
-}
+// .toolbar-space {
+//     flex: 1 1 auto;
+// }
 
 .toolbar-routes {
     border: 5px solid $primary-dark;
 }
 
-.mat-toolbar.mat-toolbar-nav[_ngcontent-c1] {
-    padding: 10px 150px;
-}
+// .mat-toolbar.mat-toolbar-nav[_ngcontent-c1] {
+//     padding: 10px 150px;
+// }
 /* #endregion */ 
 
 /* #region toolbar tech (top) */ 
@@ -75,9 +93,9 @@ a.link:hover:not(.active-route) {
     @include container-align(0px 150px);
 }
 
-.mat-toolbar-tech .mat-chip-list  {
-    margin: 5px;
-}
+// .mat-toolbar-tech .mat-chip-list  {
+//     margin: 5px;
+// }
 
 .mat-chip {
     cursor: pointer;
@@ -85,28 +103,28 @@ a.link:hover:not(.active-route) {
 /* #endregion */
 
 /* #region toolbar nav (bottom) */ 
-.mat-toolbar.mat-toolbar-nav {
-    @include container-align(10px);
-}
+// .mat-toolbar.mat-toolbar-nav {
+//     @include container-align(10px);
+// }
 
-.mat-toolbar .mat-toolbar-row.nav-row {
-    // padding: 0px 100px;
-    width: 100%;    
-    flex: 1 1 auto;
-}
+// .mat-toolbar .mat-toolbar-row.nav-row {
+//     padding: 0px 100px;
+//     width: 100%;    
+//     flex: 1 1 auto;
+// }
 
-.mat-toolbar-nav .mat-toolbar-row .toolbar-logo {
-    @include toolbar-card(115px);
-}
+// .mat-toolbar-nav .mat-toolbar-row .toolbar-logo {
+//     @include toolbar-card(115px);
+// }
 
-.mat-toolbar-nav .mat-toolbar-row .toolbar-logo img {
-    // width: 100%;
-    // margin-left: auto;
-    // margin-right: auto;
-    margin-top: -5px;
-    background-color: #fff;
-    padding: 5px;
-    border-radius: 5px;
-}
+// .mat-toolbar-nav .mat-toolbar-row .toolbar-logo img {
+//     // width: 100%;
+//     // margin-left: auto;
+//     // margin-right: auto;
+//     margin-top: -5px;
+//     background-color: #f7f6f3;
+//     padding: 5px;
+//     border-radius: 5px;
+// }
 /* #endregion */
 

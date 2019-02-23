@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RoutingModule } from './_modules/routing.module';
 import { MatComponentsModule } from './_modules/mat-components.module';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 /* Components */
 import { AppComponent } from './app.component';
@@ -17,6 +18,7 @@ import { HomeComponent } from './_components/home/home.component';
 import { RegulatorComponent } from './_components/regulator/regulator.component';
 import { ConsultantComponent } from './_components/consultant/consultant.component';
 import { LayoutModule } from '@angular/cdk/layout';
+import { AppTableComponent } from './_components/app-table/app-table.component';
 
 @NgModule({
   declarations: [
@@ -29,14 +31,16 @@ import { LayoutModule } from '@angular/cdk/layout';
     CompanyComponent,
     HomeComponent,
     RegulatorComponent,
-    ConsultantComponent
+    ConsultantComponent,
+    AppTableComponent
   ],
   imports: [
     BrowserModule,
     RoutingModule,
     BrowserAnimationsModule,
     MatComponentsModule,
-    LayoutModule
+    LayoutModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,6 +4,10 @@
 @import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet';
 
 body { 
+    /* background-image: url(assets/images/bg-logo-rice.png); */
+    /* background-repeat: repeat; */
+    /* background-size: initial; */
+    background-color: #f7f6f3;
     margin: 0; 
     font-family: Roboto, "Helvetica Neue", sans-serif;
  }
@@ -14,4 +18,29 @@ body {
 
 a {
     cursor: pointer;
+}
+
+.container {
+    margin: 0 auto;
+    margin-top: 50px;
+    max-width: 1280px;
+    width: 90%;
+}
+
+@media only screen and (min-width: 601px)
+{
+    .container {
+        width: 85%;
+    }
+}
+
+/* Material Styling */
+mat-card-header,
+mat-card-subtitle {
+    justify-content: center;
+    display: flex !important;
+}
+
+.mat-card-subtitle{
+    color: #fff !important;
 }
