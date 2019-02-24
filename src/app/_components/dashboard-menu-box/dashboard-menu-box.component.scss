@@ -1,11 +1,6 @@
 /* Import _variables.css to the component's sass file where you want to use it. */
 @import "../../../_variables.scss";
 
-p {
-  border: 5px solid #fff;
-  padding: 10px 5px;
-}
-
 .primary-light-bg {
   background-color: $primary-light;
   color: #fff;
@@ -61,6 +56,36 @@ p {
   text-align: center;
 }
 
-.mat-list-icon {
-  color: rgba(0, 0, 0, 0.54);
+.box-blue.mat-line:hover{
+  color: rgba(0,112,173, 1);
+  transition: all .5s;
+  cursor: pointer;
+}
+
+.box-yellow.mat-line:hover{
+  color: rgb(252, 190, 27);
+  transition: all .5s;
+  cursor: pointer;
+}
+
+.box-green.mat-line:hover{
+  color: rgba(96,199,96, 1);
+  transition: all .5s;
+  cursor: pointer;
+}
+
+.box-red.mat-line:hover{
+  color: rgba(255, 86, 65, 1);
+  transition: all .5s;
+  cursor: pointer;
+}
+
+.mat-card-content {
+  border: 5px solid #fff;
+  padding: 10px 5px;
+}
+
+.mat-list-icon,
+.mat-list-item {
+  color: #fff;
 } 

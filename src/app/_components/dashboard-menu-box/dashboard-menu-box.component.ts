@@ -1,5 +1,16 @@
 import { Component, Input } from '@angular/core';
 
+export interface SectionLink {
+  name: string;
+  route: string;
+}
+export interface Section {
+  title: string;
+  subtitle: string;
+  boxColor: string;
+  links: SectionLink[];
+}
+
 @Component({
   selector: 'app-dashboard-menu-box',
   templateUrl: './dashboard-menu-box.component.html',
@@ -9,7 +20,8 @@ export class DashboardMenuBoxComponent {
 
   @Input() title: string;
   @Input() subtitle: string;
-  @Input() links: string;
+  @Input() links: SectionLink[];
+  @Input('box-color') boxColor: string;
 
   constructor() { }
 }
