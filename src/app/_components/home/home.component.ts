@@ -15,6 +15,7 @@ export class HomeComponent {
 
   regulator: Section = { title: 'Regulator', subtitle: 'Asset Verifier', boxColor: 'red', links: [
     { name: 'Go To Regulator Peer', route: '/regulator' },
+    { name: '', route: '' }
   ]};
 
   client: Section = { title: 'Client', subtitle: 'Buyer', boxColor: 'yellow', links: [
@@ -24,6 +25,7 @@ export class HomeComponent {
 
   consultant: Section = { title: 'Consultant', subtitle: 'Asset', boxColor: 'green', links: [
     { name: 'Go To Consultant Peer', route: '/consultant' },
+    { name: '', route: '' }
   ]};
 
   constructor() { }
