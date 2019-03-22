@@ -1,11 +1,12 @@
+/* Import _variables.css to the component's sass file where you want to use it. */
+@import "../../../variables";
+
 .slider-container {
-    // display: flex;
-    // flex-direction: column
+    border: 1px solid $primary-light;
   }
   
   .slides {
-    display: flex;
-    overflow-x: scroll;
+    overflow-x: auto;
     // This is not supported by all browsers. If you want a different animation, please feel free
     // to find your own solution.
     scroll-behavior: smooth;
@@ -13,11 +14,7 @@
     &::-webkit-scrollbar {
         width: 0px;
         background: transparent;
+        display: none;
     }
   
-  }
-  
-  .controls {
-    display: flex;
-    justify-content: center;
   }
