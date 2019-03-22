@@ -52,7 +52,7 @@
 }
 
 a.link{
-    border-radius: 15px;
+    border-radius: 0px;
 }
 a.link:hover:not(.active-route) {
     border: none;
@@ -73,7 +73,9 @@ a.link:hover:not(.active-route) {
 // }
 
 .mat-button-toggle-checked {
-    background-color: $secondary;
+    color: $secondary;
+    background: transparent;
+    border-bottom: 5px solid $secondary;
 }
 
 // .toolbar-space {

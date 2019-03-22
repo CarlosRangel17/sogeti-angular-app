@@ -21,6 +21,7 @@ export class DashboardMenuBoxComponent {
   @Input() title: string;
   @Input() subtitle: string;
   @Input() links: SectionLink[];
+  // tslint:disable-next-line:no-input-rename
   @Input('box-color') boxColor: string;
 
   constructor() { }

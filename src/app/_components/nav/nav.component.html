@@ -9,61 +9,31 @@
       </mat-chip-list> -->
 </mat-toolbar>
 
-<mat-toolbar 
-  class="mat-toolbar-nav" 
-  color="primary">
-  <mat-toolbar-row 
-    fxLayoutAlign="center center"
-    fxLayout="row" 
-    class="nav-row">
-  
+<mat-toolbar class="mat-toolbar-nav" color="primary">
+  <mat-toolbar-row fxLayoutAlign="center center" fxLayout="row" class="nav-row">
+
     <!-- <img routerLink]="['/']" mat-card-image src="../assets/images/sogeti-logo.png" alt="Photo of a Sogeti Logo"> -->
 
-    <a 
-      class="toolbar-logo"
-      fxFlex="5%" 
-      fxFlex.sm="7%"
-      [routerLink]="['/']">
-      <img 
-        class="logo-image" 
-        mat-card-image 
-        src="../assets/images/sogeti-logo.png" 
-        alt="Photo of a Sogeti Logo">
+    <a class="toolbar-logo" fxFlex="5%" fxFlex.sm="7%" [routerLink]="['/']">
+      <img class="logo-image" mat-card-image src="../assets/images/sogeti-logo.png" alt="Photo of a Sogeti Logo">
     </a>
-    <div fxFlex="60%"fxShow></div>
-    <span 
-      class="menu-span"
-      fxLayout="row"
-      fxLayoutAlign="end"
-      fxShow
-      fxHide.lt-md="true">
-        <a                  
-        class="link"
-        mat-button 
-        *ngFor="let link of links" 
-        [routerLink]="link.path"
-        [routerLinkActive]="['mat-button-toggle-checked', 'active-route']"
-        [routerLinkActiveOptions]="{ exact: true }"
-        #rla="routerLinkActive">
-        {{ link.label }}            
+    <!-- Full Nav -->
+    <div fxFlex="60%" fxShow></div>
+    <span class="menu-span" fxLayout="row" fxLayoutAlign="end" fxShow fxHide.lt-md="true">
+      <a class="link" mat-button *ngFor="let link of links" [routerLink]="link.path" [routerLinkActive]="['mat-button-toggle-checked', 'active-route']"
+        [routerLinkActiveOptions]="{ exact: true }" #rla="routerLinkActive">
+        {{ link.label }}
       </a>
     </span>
+    <!-- Collapsed Nav -->
     <mat-menu #menu="matMenu">
-        <button 
-          *ngFor="let link of links" 
-          mat-menu-item
-          [routerLink]="link.path"
-          [routerLinkActive]="['mat-button-toggle-checked', 'active-route']"
-          [routerLinkActiveOptions]="{ exact: true }"
-          #rla="routerLinkActive">
-          {{ link.label }}            
-        </button>
-      </mat-menu>
-    <button 
-      fxHide
-      fxShow.lt-md="true"
-      mat-button [matMenuTriggerFor]="menu">
-        <mat-icon>apps</mat-icon>
+      <button *ngFor="let link of links" mat-menu-item [routerLink]="link.path" [routerLinkActive]="['mat-button-toggle-checked', 'active-route']"
+        [routerLinkActiveOptions]="{ exact: true }" #rla="routerLinkActive">
+        {{ link.label }}
+      </button>
+    </mat-menu>
+    <button fxHide fxShow.lt-md="true" mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>apps</mat-icon>
     </button>
     <!-- <mat-card class="toolbar-routes">
     </mat-card> -->

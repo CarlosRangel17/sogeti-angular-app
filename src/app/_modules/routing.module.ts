@@ -10,32 +10,23 @@ import { ConsultantComponent } from '../_components/consultant/consultant.compon
 
 const routes: Routes = [
   {
-    path: '',
-    component: HomeComponent,
+    path: '', component: HomeComponent,
     data: {
       label: 'Home',
       icon: '<add icon info here>'
     }
   },
+  { path: 'home', component: HomeComponent },
   {
-    path: 'home',
-    component: HomeComponent,
-  },
-  {
-    path: 'regulator',
-    component: RegulatorComponent,
+    path: 'regulator', component: RegulatorComponent,
     data: {
       label: 'Regulator',
       icon: '<add icon info here>'
     }
   },
+  { path: 'market', component: MarketComponent },
   {
-    path: 'market',
-    component: MarketComponent,
-  },
-  {
-    path: 'consultant',
-    component: ConsultantComponent,
+    path: 'consultant', component: ConsultantComponent,
     data: {
       label: 'Consultant',
       icon: '<add icon info here>',
@@ -45,8 +36,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'client',
-    component: ClientComponent,
+    path: 'client', component: ClientComponent,
     data: {
       label: 'Client',
       icon: '<add icon info here>',
@@ -57,8 +47,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'company',
-    component: CompanyComponent,
+    path: 'company', component: CompanyComponent,
     data: {
       label: 'Company',
       icon: '<add icon info here>',
@@ -68,10 +57,7 @@ const routes: Routes = [
       ]
     }
   },
-  {
-    path: '**',
-    component: NotFoundComponent
-  },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({

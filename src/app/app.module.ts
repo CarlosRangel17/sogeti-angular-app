@@ -19,6 +19,8 @@ import { RegulatorComponent } from './_components/regulator/regulator.component'
 import { ConsultantComponent } from './_components/consultant/consultant.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { AppTableComponent } from './_components/app-table/app-table.component';
+import { SliderComponent } from './_components/slider/slider.component';
+import { SliderItemDirective } from './_components/slider/slider-item.directive';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { AppTableComponent } from './_components/app-table/app-table.component';
     HomeComponent,
     RegulatorComponent,
     ConsultantComponent,
-    AppTableComponent
+    AppTableComponent,
+    SliderComponent,
+    SliderItemDirective
   ],
   imports: [
     BrowserModule,
