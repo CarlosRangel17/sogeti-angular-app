@@ -9,7 +9,7 @@ import { Section } from '../dashboard-menu-box/dashboard-menu-box.component';
 export class HomeComponent {
 
   company: Section = { title: 'Company', subtitle: 'Supplier', boxColor: 'blue', links: [
-    { name: 'Go To Market', route: '/market' },
+    { name: 'Go To Market', route: '/market/company' },
     { name: 'Go To Sogeti Peer', route: '/company' }
   ]};
 
@@ -19,7 +19,7 @@ export class HomeComponent {
   ]};
 
   client: Section = { title: 'Client', subtitle: 'Buyer', boxColor: 'yellow', links: [
-    { name: 'Go To Market', route: '/market' },
+    { name: 'Go To Market', route: '/market/client' },
     { name: 'Go To Client Peer', route: '/client' }
   ]};
 

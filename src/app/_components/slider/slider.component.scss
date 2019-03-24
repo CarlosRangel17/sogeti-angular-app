@@ -2,7 +2,9 @@
 @import "../../../variables";
 
 .slider-container {
-    border: 1px solid $primary-light;
+    border: 2px solid $warn;
+    border-radius: 5px;
+    background-color: #fff;
   }
   
   .slides {
@@ -10,11 +12,22 @@
     // This is not supported by all browsers. If you want a different animation, please feel free
     // to find your own solution.
     scroll-behavior: smooth;
-  
+    max-width: 200px;
+    
     &::-webkit-scrollbar {
         width: 0px;
         background: transparent;
         display: none;
     }
   
+  }
+
+  .slide-navigation{
+    position: absolute;
+    margin-top: 235px;
+    margin-left: -188px;
+  }
+
+  .slide-navigation > button {
+    background-color: transparent;
   }

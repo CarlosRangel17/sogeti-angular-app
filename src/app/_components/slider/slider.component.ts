@@ -19,12 +19,12 @@ export class SliderComponent implements AfterContentInit {
   }
 
   ngAfterContentInit() {
-    console.log('items', this.items);
+    // console.log('items', this.items);
   }
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngAfterViewInit() {
-    console.log('slides', this.slidesContainer);
+    // console.log('slides', this.slidesContainer);
   }
 
   onClickLeft() {

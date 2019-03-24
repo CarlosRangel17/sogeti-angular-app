@@ -21,6 +21,10 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { AppTableComponent } from './_components/app-table/app-table.component';
 import { SliderComponent } from './_components/slider/slider.component';
 import { SliderItemDirective } from './_components/slider/slider-item.directive';
+import { MarketService } from './_services/market.service';
+import { Utils } from './helpers/utils';
+import { MarketCategoryPipe } from './helpers/market-category.pipe';
+import { MarketImagePipe } from './helpers/market-image.pipe';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,9 @@ import { SliderItemDirective } from './_components/slider/slider-item.directive'
     ConsultantComponent,
     AppTableComponent,
     SliderComponent,
-    SliderItemDirective
+    SliderItemDirective,
+    MarketCategoryPipe,
+    MarketImagePipe
   ],
   imports: [
     BrowserModule,
@@ -46,7 +52,10 @@ import { SliderItemDirective } from './_components/slider/slider-item.directive'
     LayoutModule,
     FlexLayoutModule
   ],
-  providers: [],
+  providers: [
+    MarketService,
+    Utils
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

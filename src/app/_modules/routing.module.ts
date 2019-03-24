@@ -24,6 +24,8 @@ const routes: Routes = [
       icon: '<add icon info here>'
     }
   },
+  { path: 'market/client', component: MarketComponent },
+  { path: 'market/company', component: MarketComponent },
   { path: 'market', component: MarketComponent },
   {
     path: 'consultant', component: ConsultantComponent,

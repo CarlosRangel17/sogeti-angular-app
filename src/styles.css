@@ -7,7 +7,7 @@ body {
     /* background-image: url(assets/images/bg-logo-rice.png); */
     /* background-repeat: repeat; */
     /* background-size: initial; */
-    background-color: #f7f6f3;
+    background-color: #f7f6f3; /* $app-white */
     margin: 0; 
     font-family: Roboto, "Helvetica Neue", sans-serif;
  }
