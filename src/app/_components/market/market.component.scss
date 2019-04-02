@@ -1,6 +1,13 @@
 /* Import _variables.css to the component's sass file where you want to use it. */
 @import "../../../_variables.scss";
 
+.filter-section {
+  padding: 15px;
+  border-radius: 5px;
+  border: 2px solid $primary-dark;
+  background-color: #fff;
+}
+
 .example-card {
     /* max-width: 250px; */
     /* min-width: 225px; */
@@ -19,19 +26,22 @@
     background-size: cover;
   }
 
-  .mat-form-field {
-    font-size: 15px;
-  }
-
-  app-slider {
-    padding: 10px;
-    background-color: transparent;
-    border-radius: 5px;
-  }
-
   .carousel-container {
     padding: 15px;
     border-radius: 5px;
     border: 1px solid $primary-dark;
     background-color: #fff;
+  }  
+
+  .carousel-container > .carousel-header {
+    width: 100%;
+    color: $primary-light;
+    background-color: $primary-dark;
+    border-radius: 5px;
+  }
+  
+  app-slider {
+    padding: 10px 10px 0px 10px;
+    background-color: transparent;
+    border-radius: 5px;
   }

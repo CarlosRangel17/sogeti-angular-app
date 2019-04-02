@@ -1,4 +1,4 @@
-import { Component, AfterContentInit, ContentChildren, ViewChild, QueryList, ElementRef } from '@angular/core';
+import { Component, AfterContentInit, ContentChildren, ViewChild, QueryList, ElementRef, Input } from '@angular/core';
 import { SliderItemDirective } from './slider-item.directive';
 
 @Component({
@@ -7,7 +7,8 @@ import { SliderItemDirective } from './slider-item.directive';
   styleUrls: ['./slider.component.scss']
 })
 export class SliderComponent implements AfterContentInit {
-
+  // tslint:disable-next-line:no-input-rename
+  @Input('title') title: string;
   @ContentChildren(SliderItemDirective, { read: ElementRef }) items
     : QueryList<ElementRef<HTMLDivElement>>;
   @ViewChild('slides') slidesContainer: ElementRef<HTMLDivElement>;

@@ -1,5 +1,8 @@
 <div class="slider-container">
-  <div fxLayoutAlign="start end" fxLayout="row" fxLayoutGap="0px" fxFlex.sm="400px" fxFlex.md="600px" fxFlex.lg="1000px"
+    <div *ngIf="title" class="slide-header" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="0px" fxFlex.sm="400px" fxFlex.md="600px" fxFlex.lg="1000px" fxFlex.xl="1000px">
+        <h2>{{ title }}</h2>
+      </div>
+  <div fxLayoutAlign="start end" fxLayout="row" fxLayoutGap="0px" fxFlex.sm="400px" fxFlex.md="600px" fxFlex.lg="1000px" fxFlex.xl="1000px"
     class="slides" #slides>
     <ng-content select="[appSliderItem]" #sliderItem></ng-content>
   </div>

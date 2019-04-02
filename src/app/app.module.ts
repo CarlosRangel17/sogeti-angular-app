@@ -25,6 +25,7 @@ import { MarketService } from './_services/market.service';
 import { Utils } from './helpers/utils';
 import { MarketCategoryPipe } from './helpers/market-category.pipe';
 import { MarketImagePipe } from './helpers/market-image.pipe';
+import { MarketFilterComponent } from './_components/market/market-filter/market-filter.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { MarketImagePipe } from './helpers/market-image.pipe';
     SliderComponent,
     SliderItemDirective,
     MarketCategoryPipe,
-    MarketImagePipe
+    MarketImagePipe,
+    MarketFilterComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,13 @@
+<div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+  <mat-form-field fxFlex="20%">
+    <mat-label>Category</mat-label>
+    <mat-select>
+      <mat-option #categories *ngFor="let category of categories | keyvalue" [value]="category.key">
+        {{ category.key | marketCategory }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field fxFlex="60%">
+    <input matInput placeholder="Search Consultants">
+  </mat-form-field>
+</div>

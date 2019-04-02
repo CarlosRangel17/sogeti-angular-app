@@ -16,6 +16,7 @@ export class MarketService {
     private route: ActivatedRoute,
     private utils: Utils
   ) {
+    // TODO: Figure out how to do this with ActivatedRoute
     let url: any = window.location.href;
     url = url.split('/');
     this.profile = url[url.length - 1];

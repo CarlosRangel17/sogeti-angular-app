@@ -2,50 +2,45 @@
   <h1>Market</h1>
 
   <!-- Search Filter Section -->
-  <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10px">
-    <mat-form-field fxFlex="60%">
-      <input matInput placeholder="Search Consultants">
-    </mat-form-field>
-    <mat-form-field fxFlex="20%">
-        <mat-label>Category</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let category of categories | keyvalue" [value]="category.key">
-            {{ category.key | marketCategory }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+  <div class="filter-section">
+    <app-market-filter [categories]="categories"></app-market-filter>
   </div>
 
   <!-- Card Carousel Section -->
-  <div class="carousel-container" fxLayout="row" fxLayoutAlign="space-around end" *ngFor="let category of categories | keyvalue">
-    <mat-card class="example-card primary">
-      <img mat-card-image [src]="category.key | marketImage" alt="Photo of a Shiba Inu">
-      <mat-card-content fxLayoutAlign="center end">
-        <h3>
-          {{ category.key | marketCategory }}
-        </h3>
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button></button>
-        <button mat-button></button>
-      </mat-card-actions>
-    </mat-card>
-    <app-slider>
-      <div appSliderItem *ngFor="let consultant of category.value">
-        <mat-card class="example-card">
-          <img mat-card-image [src]="consultant.AvatarImage" alt="Photo of consultant">
-          <mat-card-content>
-            <p class="card-text" fxLayoutAlign="center">
-              <span [ngStyle]="{'color': '$primary'}">{{ consultant.FirstName + ' ' + consultant.LastName }}</span>
-            </p>
-            <p class="card-text" fxLayoutAlign="space-around">
-                <span> Joined {{ consultant.DateCreated }} </span>
-                <span> $/HR {{ '$' + consultant.RatePerHour }} </span>
-              </p>
-          </mat-card-content>
-        </mat-card>
-      </div>
-    </app-slider>
+  <div class="carousel-container" fxLayout="column" fxLayoutAlign="center center" *ngFor="let category of filteredCategories | keyvalue">
+    <div class="carousel-header" fxLayout="row" fxLayoutAlign="center">
+      <!-- <h4>{{ category.key | marketCategory }}</h4 > -->
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-around end">
+        <mat-card class="example-card primary">
+            <img mat-card-image [src]="category.key | marketImage" alt="Photo of a Shiba Inu">
+            <mat-card-content fxLayoutAlign="center end">
+              <h3>
+                {{ category.key | marketCategory }}
+              </h3>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-button></button>
+              <button mat-button></button>
+            </mat-card-actions>
+          </mat-card>
+        <app-slider>    
+          <div appSliderItem *ngFor="let consultant of category.value">
+            <mat-card class="example-card">
+              <img mat-card-image [src]="consultant.AvatarImage" alt="Photo of consultant">
+              <mat-card-content>
+                <p class="card-text" fxLayoutAlign="center">
+                  <span [ngStyle]="{'color': '$primary'}">{{ consultant.FirstName + ' ' + consultant.LastName }}</span>
+                </p>
+                <p class="card-text" fxLayoutAlign="space-around">
+                  <span> Joined {{ consultant.DateCreated }} </span>
+                  <span> $/HR {{ '$' + consultant.RatePerHour }} </span>
+                </p>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </app-slider>
+    </div>
   </div>
 </div>
 <!-- <app-table></app-table> -->

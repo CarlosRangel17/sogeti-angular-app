@@ -10,10 +10,16 @@ import { Consultant } from 'src/app/_models/consultant';
 export class MarketComponent {
 
   categories: Map<any, any>;
+  filteredCategories: Map<any, any>;
 
   constructor(private marketService: MarketService) {
-    this.categories = this.marketService.getMarketAssets();
+    this.filteredCategories = this.categories = this.marketService.getMarketAssets();
     console.log(this.categories);
   }
 
+  filterAssets(query) {
+    // this.filteredCategories = (query)
+    //   this.categories.filt
+    // ?
+  }
 }
