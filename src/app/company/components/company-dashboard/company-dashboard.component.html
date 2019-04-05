@@ -1,3 +1,55 @@
-<p>
-  company-dashboard works!
-</p>
+<style>
+  .header {
+    background-color: #333;
+    padding: 25px;
+  }
+
+  h2 {
+    color: #fff;
+  }
+
+  .dashboard-avatar {
+    padding: 10px 10px 0px 10px;
+    background-color: #fff;
+    border-radius: 5px;
+  }
+
+  .mat-card {
+    padding-bottom: 0px;
+  }
+</style>
+
+<div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="20px">
+  <div class="header" fxFlexFill>
+    <div fxLayout="row" fxLayoutAlign="space-evenly end">
+      <div fxFlex.sm="40%" fxFlex="1 1 20%">
+        <mat-card>
+            <div  class="dashboard-avatar">
+                <img mat-card-image src="../../../../assets/images/sogeti-logo.png" alt="Photo of a Shiba Inu">
+            </div>
+        </mat-card>
+      </div>
+      <div fxFlex.sm="40%" fxFlex="1 1 20%">
+        <h2 fxLayout="row" fxFlexFill>Company</h2>
+        <mat-card>
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Shiba Inu</mat-card-title>
+            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+              A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+              bred for hunting.
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      <div fxFlex="1 1 20%"></div>
+    </div>
+
+  </div>
+</div>
+
+<app-dashboard></app-dashboard>
