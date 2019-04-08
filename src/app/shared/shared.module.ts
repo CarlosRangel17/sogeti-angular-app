@@ -18,7 +18,7 @@ import { MarketService } from './services/market.service';
   ],
   imports: [
     CommonModule,
-    MatComponentsModule
+    MatComponentsModule,
   ],
   exports: [
     CommonModule,

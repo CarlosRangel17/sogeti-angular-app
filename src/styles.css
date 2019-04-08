@@ -35,6 +35,10 @@ a {
 }
 
 /* Material Styling */
+mat-icon {
+    cursor: pointer;
+}
+
 mat-card-header,
 mat-card-subtitle {
     justify-content: center;

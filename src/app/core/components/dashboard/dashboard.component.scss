@@ -1,0 +1,55 @@
+@import '../../../../variables';
+
+.header {
+    padding: 25px;
+    background-color: $primary;
+  }
+
+  .header.company {
+    background-color: $primary-dark;
+  }
+
+  .header.client {
+    background-color: #FAB025;
+  }
+
+  .header.regulator {
+      background-color: $warn;
+  }
+
+  .header.consultant {
+    background-color: $success;
+  }
+  
+  h2 {
+    color: $secondary;
+  }
+
+  .db-profile-container {
+    background: #fff;
+    border-radius: 5px;
+  }
+  
+  .db-profile-container > h2 {
+    margin-block-start: auto;
+  }
+
+  .db-avatar {
+    padding: 10px 10px 0px 10px;
+    background-color: #fff;
+    border-radius: 5px;
+  }
+
+  .mat-card {
+    padding-bottom: 0px;
+  }
+
+  .db-profile-span {
+      color: $primary;
+      font-weight: bold;
+  }
+
+  mat-card-title {
+      margin-top: 10px;
+  }
+

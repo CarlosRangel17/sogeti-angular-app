@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { RegulatorDashboardComponent } from './components/regulator-dashboard/regulator-dashboard.component';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   declarations: [RegulatorDashboardComponent],
   imports: [
     CommonModule,
+    CoreModule,
     SharedModule,
     RouterModule.forChild([
       { path: 'regulator/:section', component: RegulatorDashboardComponent },

@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
 import { ConsultantDashboardComponent } from './components/consultant-dashboard/consultant-dashboard.component';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   declarations: [ConsultantDashboardComponent],
   imports: [
     CommonModule,
+    CoreModule,
     SharedModule,
     RouterModule.forChild([
       { path: 'consultant/:section', component: ConsultantDashboardComponent },

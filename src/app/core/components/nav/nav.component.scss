@@ -43,6 +43,10 @@
 /* #endregion */
 
 /* #region mat defaults (override) */
+.mat-toolbar-nav {
+    padding-top: 8px;
+}
+
 .mat-toolbar-row{
     height: 100% !important;
 }

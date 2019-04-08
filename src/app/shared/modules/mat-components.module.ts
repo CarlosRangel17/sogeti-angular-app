@@ -14,6 +14,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [],
@@ -32,7 +34,9 @@ import { MatSelectModule } from '@angular/material/select';
     MatPaginatorModule,
     MatInputModule,
     MatExpansionModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDividerModule,
+    MatTabsModule
   ],
   exports: [
     MatToolbarModule,
@@ -49,7 +53,9 @@ import { MatSelectModule } from '@angular/material/select';
     MatPaginatorModule,
     MatInputModule,
     MatExpansionModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDividerModule,
+    MatTabsModule
   ]
 })
 export class MatComponentsModule { }
