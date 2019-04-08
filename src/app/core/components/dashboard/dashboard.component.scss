@@ -2,27 +2,27 @@
 
 .header {
     padding: 25px;
-    background-color: $primary;
+    background-color: #333;
   }
 
-  .header.company {
-    background-color: $primary-dark;
-  }
+  // .header.company {
+  //   background-color: $primary-dark;
+  // }
 
-  .header.client {
-    background-color: #FAB025;
-  }
+  // .header.client {
+  //   background-color: #FAB025;
+  // }
 
-  .header.regulator {
-      background-color: $warn;
-  }
+  // .header.regulator {
+  //     background-color: $warn;
+  // }
 
-  .header.consultant {
-    background-color: $success;
-  }
-  
+  // .header.consultant {
+  //   background-color: $success;
+  // }
+
   h2 {
-    color: $secondary;
+    // color: $secondary;
   }
 
   .db-profile-container {
@@ -49,7 +49,32 @@
       font-weight: bold;
   }
 
+  .mat-list-base {
+    padding-top: 0px
+  }
+  
   mat-card-title {
       margin-top: 10px;
   }
 
+  mat-list > mat-list-item:first-child {
+    background-color: #333;
+    border-radius: 4px 4px 0px 0px;
+    color: #fff;
+  }
+
+  mat-list > mat-list-item.company:first-child{ 
+    background-color: $primary-dark;
+  }
+
+  mat-list > mat-list-item.client:first-child{ 
+    background-color: #FAB025;
+  }
+
+  mat-list > mat-list-item.regulator:first-child{ 
+    background-color: $warn;
+  }
+
+  mat-list > mat-list-item.consultant:first-child{ 
+    background-color: $success;
+  }

@@ -7,11 +7,11 @@
       <div class="db-avatar">
         <img *ngIf="dashboard.AvatarUrl" mat-card-image [src]="'../../../../assets/images/' + dashboard.AvatarUrl">
       </div>
-        <mat-divider></mat-divider>
-        <mat-card-header fxLayoutAlign="center">
-        <mat-card-title> 
+      <mat-divider></mat-divider>
+      <mat-card-header fxLayoutAlign="center">
+        <mat-card-title>
           <span class="db-profile-span">
-              {{ dashboard.Role }}
+            {{ dashboard.Role }}
           </span>
         </mat-card-title>
       </mat-card-header>
@@ -20,7 +20,7 @@
   <!-- Actor Profile -->
   <div class="db-profile-container" fxLayoutAlign="stretch" fxFlex.sm="75%" fxFlex="1 1 33%">
     <mat-list fxFlex>
-      <mat-list-item>
+      <mat-list-item [ngClass]="dashboard.Role | lowercase">
         <h2> {{ dashboard.Name }} </h2>
       </mat-list-item>
       <mat-divider></mat-divider>
