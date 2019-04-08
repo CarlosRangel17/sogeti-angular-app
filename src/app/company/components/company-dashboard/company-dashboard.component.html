@@ -8,7 +8,11 @@
     color: #fff;
   }
 
-  .dashboard-avatar {
+  .db-profile-container>h2 {
+    margin-block-start: auto;
+  }
+
+  .db-avatar {
     padding: 10px 10px 0px 10px;
     background-color: #fff;
     border-radius: 5px;
@@ -19,36 +23,22 @@
   }
 </style>
 
-<div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="20px">
-  <div class="header" fxFlexFill>
-    <div fxLayout="row" fxLayoutAlign="space-evenly end">
-      <div fxFlex.sm="40%" fxFlex="1 1 20%">
-        <mat-card>
-            <div  class="dashboard-avatar">
-                <img mat-card-image src="../../../../assets/images/sogeti-logo.png" alt="Photo of a Shiba Inu">
-            </div>
-        </mat-card>
-      </div>
-      <div fxFlex.sm="40%" fxFlex="1 1 20%">
-        <h2 fxLayout="row" fxFlexFill>Company</h2>
-        <mat-card>
-          <mat-card-header>
-            <div mat-card-avatar class="example-header-image"></div>
-            <mat-card-title>Shiba Inu</mat-card-title>
-            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            <p>
-              The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-              A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-              bred for hunting.
-            </p>
-          </mat-card-content>
-        </mat-card>
-      </div>
-      <div fxFlex="1 1 20%"></div>
+<div fxLayout="row" fxLayoutGap="25px" class="header" fxFlexFill>
+  <div class="db-main" fxLayout="row" fxLayoutAlign="center start">
+    <!-- Avatar -->
+    <div class="db-avatar-container" fxFlex.sm="50%" fxFlex="1 1 40%">
+      <mat-card>
+        <div class="db-avatar">
+          <img mat-card-image src="../../../../assets/images/apa-logo.png" alt="Photo of a Shiba Inu">
+        </div>
+      </mat-card>
     </div>
-
+    <!-- Actor Profile -->
+    <div class="db-profile-container" fxFlex.sm="33%" fxFlex="1 1 40%">
+      <h2>Company</h2>
+    </div>
+    <!-- Filler Space  -->
+    <div fxFlex.gt-md="1 1 20%"></div>
   </div>
 </div>
 
