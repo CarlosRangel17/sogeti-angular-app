@@ -8,13 +8,14 @@ import { SliderItemDirective } from './components/slider/slider-item.directive';
 import { SliderComponent } from './components/slider/slider.component';
 import { AppTableComponent } from './components/app-table/app-table.component';
 import { MarketService } from './services/market.service';
+import { UpperTitleCasePipe } from './pipes/upper-title-case.pipe';
 
 @NgModule({
   declarations: [
     SliderComponent,
     SliderItemDirective,
-    AppTableComponent
-
+    AppTableComponent,
+    UpperTitleCasePipe
   ],
   imports: [
     CommonModule,
@@ -28,7 +29,8 @@ import { MarketService } from './services/market.service';
     FlexLayoutModule,
     SliderComponent,
     SliderItemDirective,
-    AppTableComponent
+    AppTableComponent,
+    UpperTitleCasePipe
   ],
   providers: [
     MarketService

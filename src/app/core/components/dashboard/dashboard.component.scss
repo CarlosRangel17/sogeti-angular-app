@@ -35,46 +35,77 @@
   }
 
   .db-avatar {
-    padding: 10px 10px 0px 10px;
+    padding: 20px 20px 0px 20px;
     background-color: #fff;
     border-radius: 5px;
   }
 
-  .mat-card {
-    padding-bottom: 0px;
+  .db-profile-span {
+      color: $primary-light;
+      font-weight: bold;
   }
 
-  .db-profile-span {
-      color: $primary;
-      font-weight: bold;
+  // .db-profile-paragraph {
+  //   color: #fff;
+  // }
+
+  .db-ops-menu {
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+  }
+
+  .db-option {
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.54);
+  }
+
+  .db-option.active {
+    color: $primary-light;
+    border-bottom: 3px solid $primary-dark;
+    border-radius: 0;
+  }
+
+  .db-option:hover:not(.active) {
+    border: none;
+    color: $primary-light;
+    transition: .5s;
+}
+
+  .mat-card {
+    padding: 0px;
   }
 
   .mat-list-base {
     padding-top: 0px
   }
-  
+
   mat-card-title {
       margin-top: 10px;
   }
 
-  mat-list > mat-list-item:first-child {
-    background-color: #333;
-    border-radius: 4px 4px 0px 0px;
-    color: #fff;
-  }
+  // mat-list {
+  //   background-color: #29303A;
+  // }
 
-  mat-list > mat-list-item.company:first-child{ 
-    background-color: $primary-light;
-  }
+  // mat-list > mat-list-item > div > p {
+  //   color: #fff;
+  // }
 
-  mat-list > mat-list-item.client:first-child{ 
-    background-color: #FAB025;
-  }
+  // mat-list > mat-list-item:first-child {
+  //   border-radius: 4px 4px 0px 0px;
+  // }
 
-  mat-list > mat-list-item.regulator:first-child{ 
-    background-color: $warn;
-  }
+  // mat-list > mat-list-item.company:first-child{ 
+  //   background-color: $primary-light;
+  // }
 
-  mat-list > mat-list-item.consultant:first-child{ 
-    background-color: $success;
-  }
+  // mat-list > mat-list-item.client:first-child{ 
+  //   background-color: #FAB025;
+  // }
+
+  // mat-list > mat-list-item.regulator:first-child{ 
+  //   background-color: $warn;
+  // }
+
+  // mat-list > mat-list-item.consultant:first-child{ 
+  //   background-color: $success;
+  // }

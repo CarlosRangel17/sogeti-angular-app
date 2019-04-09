@@ -10,6 +10,8 @@ import { MarketFilterComponent } from './components/market/market-filter/market-
 import { MarketComponent } from './components/market/market.component';
 import { NavComponent } from './components/nav/nav.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { RolePipe } from './pipes/role-pipe';
+import { DashboardContentComponent } from './components/dashboard/dashboard-content/dashboard-content.component';
 
 @NgModule({
   declarations: [
@@ -17,11 +19,13 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     DashboardMenuBoxComponent,
     HomeComponent,
     NavComponent,
+    RolePipe,
     MarketCategoryPipe,
     MarketImagePipe,
     MarketFilterComponent,
     MarketComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    DashboardContentComponent
   ],
   imports: [
     SharedModule,
@@ -33,6 +37,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     HomeComponent,
     NavComponent,
     RouterModule,
+    RolePipe,
     MarketCategoryPipe,
     MarketImagePipe,
     MarketFilterComponent,

@@ -2,36 +2,47 @@
 <div *ngIf="dashboard" class="header" [ngClass]="dashboard.Role | lowercase" fxLayout="{{ layout }}"
   fxLayoutGap="{{ layoutGap }}" fxLayoutAlign="{{ layoutAlign }}" fxFlexFill>
   <!-- Avatar -->
-  <div class="db-avatar-container" fxFlex.sm="20%" fxFlex="1 1 10%">
+  <div class="db-avatar-container" fxFlex.sm="20%" fxFlex="1 1 15%">
     <mat-card>
       <div class="db-avatar">
-        <img *ngIf="dashboard.AvatarUrl" mat-card-image [src]="'../../../../assets/images/' + dashboard.AvatarUrl">
+        <img *ngIf="dashboard.AvatarUrl" mat-card-image [style.margin-bottom]='0' [src]="'../../../../assets/images/' + dashboard.AvatarUrl">
       </div>
-      <mat-divider></mat-divider>
       <mat-card-header fxLayoutAlign="center">
-        <mat-card-title>
-          <span class="db-profile-span">
-            {{ dashboard.Role }}
-          </span>
-        </mat-card-title>
-      </mat-card-header>
+        <mat-divider></mat-divider>
+        <!-- <div 
+            *ngIf="dashboard.AvatarUrl" 
+            mat-card-avatar 
+            [ngStyle]="
+            {
+              'background-image': 'url(../../../../assets/images/' + dashboard.AvatarUrl + ')',
+              'background-size': 'cover'
+            }"></div> -->
+          <mat-card-title>
+            {{ dashboard.Role | role }}
+            <!-- <span class="db-profile-span"></span> -->
+          </mat-card-title>
+        </mat-card-header>
     </mat-card>
   </div>
   <!-- Actor Profile -->
   <div class="db-profile-container" fxLayoutAlign="stretch" fxFlex="1 1 40%">
     <mat-list fxFlex>
       <mat-list-item [ngClass]="dashboard.Role | lowercase">
-        <h2> {{ dashboard.Name }} </h2>
+        <h2>
+          <span class="db-profile-span">
+            {{ dashboard.Name }}
+          </span>
+        </h2>
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item>
-        <p>
+        <p class="db-profile-paragraph">
           <span class="db-profile-span">Name:</span> {{ dashboard.Name }}
         </p>
       </mat-list-item>
       <mat-divider></mat-divider>
       <mat-list-item>
-        <p>
+        <p class="db-profile-paragraph">
           <span class="db-profile-span">Address:</span> {{ dashboard.Address.address }}
         </p>
       </mat-list-item>
@@ -39,7 +50,7 @@
   </div>
 
   <!-- Ops -->
-  <mat-accordion class="db-options" fxFlex.sm="20%" fxFlex="1 1 20%">
+  <!-- <mat-accordion class="db-options" fxFlex.sm="20%" fxFlex="1 1 20%">
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -63,26 +74,31 @@
       </mat-expansion-panel-header>
       <p>I'm visible because I am open</p>
     </mat-expansion-panel>
-  </mat-accordion>
+  </mat-accordion> -->
 </div> <!-- ./app-dashboard-header -->
 
-<div *ngIf="dashboard" class="ops" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="space-evenly center">
+<!-- <app-dashboard-ops></app-dashboard-ops> -->
+<div fxShow fxHide.gt-sm *ngIf="dashboard" class="ops" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="space-evenly center">
   <mat-accordion fxFlexFill>
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-description>
-          Heading
+          {{ selectedOption | uppertitlecase }}
         </mat-panel-description>
       </mat-expansion-panel-header>
-      
-      <mat-divider></mat-divider>
-      
-      <mat-tab-group fxLayoutAlign="center end">
-        <mat-tab label="First"></mat-tab>
-        <mat-tab label="Second"> </mat-tab>
-        <mat-tab label="Third"> </mat-tab>
-      </mat-tab-group>
 
+      <div fxLayout="column" fxLayoutGap="15px" fxLayoutAlign="space-evenly center">
+        <mat-divider fxFlexFill></mat-divider>
+        <div fxLayout="row" fxLayoutAlign="space-evenly center" fxFlexFill>
+            <button 
+              mat-button 
+              *ngFor="let option of options" 
+              class="db-option" 
+              [class.active]="selectedOption === option.key" 
+              [routerLink]="['/' + dashboard.Role.toLowerCase(), option.key]" 
+              (click)="updateOption(option.key)">{{ option.key | uppertitlecase }}</button>
+        </div>
+      </div>
       <!-- <mat-form-field>
             <input matInput placeholder="First name">
           </mat-form-field>
@@ -92,10 +108,23 @@
     </mat-expansion-panel>
   </mat-accordion>
 </div>
-<div class="ops" fxLayout="row" fxLayoutAlign="space-evenly center">
-  <mat-tab-group>
-    <mat-tab label="First"></mat-tab>
-    <mat-tab label="Second"></mat-tab>
-    <mat-tab label="Third"></mat-tab>
-  </mat-tab-group>
+<div class="db-ops-menu" fxShow fxHide.lt-md fxLayout="column" fxLayoutGap="15px" fxLayoutAlign="space-evenly center">
+  <div fxFlex></div>
+  <div fxLayout="row" fxLayoutAlign="space-evenly center" fxFlexFill>
+    <!-- This could be a component -->
+    <button 
+      mat-button 
+      *ngFor="let option of options" 
+      class="db-option" 
+      [class.active]="selectedOption === option.key" 
+      [routerLink]="['/' + dashboard.Role.toLowerCase(), option.key]" 
+      (click)="updateOption(option.key)">{{ option.key | uppertitlecase }}</button>  
+    </div>
+  <div fxFlex></div>
+</div> <!-- ./ <app-dashboard-ops></app-dashboard-ops> -->
+
+<div class="db-content-container" fxLayout="row" >
+  <app-dashboard-content [selected-option]="selectedOption">
+    <ng-content class="dashboard-content" select=".dashboard-content"></ng-content>
+  </app-dashboard-content>
 </div>
