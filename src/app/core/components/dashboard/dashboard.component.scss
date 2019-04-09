@@ -2,7 +2,7 @@
 
 .header {
     padding: 25px;
-    background-color: #333;
+    background-color: #29303A;;
   }
 
   // .header.company {
@@ -64,7 +64,7 @@
   }
 
   mat-list > mat-list-item.company:first-child{ 
-    background-color: $primary-dark;
+    background-color: $primary-light;
   }
 
   mat-list > mat-list-item.client:first-child{ 

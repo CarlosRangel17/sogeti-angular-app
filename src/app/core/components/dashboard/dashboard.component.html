@@ -2,7 +2,7 @@
 <div *ngIf="dashboard" class="header" [ngClass]="dashboard.Role | lowercase" fxLayout="{{ layout }}"
   fxLayoutGap="{{ layoutGap }}" fxLayoutAlign="{{ layoutAlign }}" fxFlexFill>
   <!-- Avatar -->
-  <div class="db-avatar-container" fxFlex.sm="25%" fxFlex="1 1 10%">
+  <div class="db-avatar-container" fxFlex.sm="20%" fxFlex="1 1 10%">
     <mat-card>
       <div class="db-avatar">
         <img *ngIf="dashboard.AvatarUrl" mat-card-image [src]="'../../../../assets/images/' + dashboard.AvatarUrl">
@@ -18,7 +18,7 @@
     </mat-card>
   </div>
   <!-- Actor Profile -->
-  <div class="db-profile-container" fxLayoutAlign="stretch" fxFlex.sm="75%" fxFlex="1 1 33%">
+  <div class="db-profile-container" fxLayoutAlign="stretch" fxFlex="1 1 40%">
     <mat-list fxFlex>
       <mat-list-item [ngClass]="dashboard.Role | lowercase">
         <h2> {{ dashboard.Name }} </h2>
@@ -39,7 +39,7 @@
   </div>
 
   <!-- Ops -->
-  <mat-accordion>
+  <mat-accordion class="db-options" fxFlex.sm="20%" fxFlex="1 1 20%">
     <mat-expansion-panel>
       <mat-expansion-panel-header>
         <mat-panel-title>
@@ -70,16 +70,13 @@
   <mat-accordion fxFlexFill>
     <mat-expansion-panel>
       <mat-expansion-panel-header>
-        <mat-panel-title fxLayoutAlign="end">
-          Personal data
-        </mat-panel-title>
-        <mat-panel-description fxLayoutAlign="start">
-          Type your name and age
+        <mat-panel-description>
+          Heading
         </mat-panel-description>
       </mat-expansion-panel-header>
-
+      
       <mat-divider></mat-divider>
-
+      
       <mat-tab-group fxLayoutAlign="center end">
         <mat-tab label="First"></mat-tab>
         <mat-tab label="Second"> </mat-tab>
