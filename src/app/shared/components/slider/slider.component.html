@@ -1,17 +1,16 @@
-<div class="slider-container">
-    <div *ngIf="title" class="slide-header" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="0px" fxFlex.sm="400px" fxFlex.md="600px" fxFlex.lg="1000px" fxFlex.xl="1000px">
-        <h2>{{ title }}</h2>
-      </div>
-  <div fxLayoutAlign="start end" fxLayout="row" fxLayoutGap="0px" fxFlex.sm="400px" fxFlex.md="600px" fxFlex.lg="1000px" fxFlex.xl="1000px"
-    class="slides" #slides>
+<div class="slider-container" fxFlex>
+  <div *ngIf="title" class="slide-header" fxLayout="row" fxLayoutAlign="center" fxLayoutGap="0px">
+    <h2>{{ title }}</h2>
+  </div>
+  <div fxLayoutAlign="start end" fxLayout="row" fxLayoutGap="0px" class="slides" #slides>
     <ng-content select="[appSliderItem]" #sliderItem></ng-content>
   </div>
   <div class="slide-navigation" fxLayoutAlign="center end">
     <button mat-raised-button (click)="onClickLeft()">
-        <mat-icon mat-list-icon>chevron_left</mat-icon>
+      <mat-icon mat-list-icon>chevron_left</mat-icon>
     </button>
     <button mat-raised-button (click)="onClickRight()">
-        <mat-icon mat-list-icon>chevron_right</mat-icon>
+      <mat-icon mat-list-icon>chevron_right</mat-icon>
     </button>
   </div>
 </div>

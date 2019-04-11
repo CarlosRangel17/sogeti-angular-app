@@ -1,15 +1,15 @@
-<div class="container" fxLayout="column" fxLayoutGap="20px" >
+<!-- <div class="container" fxLayout="column" fxLayoutGap="20px" >
   <h1>Market</h1>
 
-  <!-- Search Filter Section -->
+  COMMENT ME OUTSearch Filter Section
   <div class="filter-section">
     <app-market-filter [categories]="categories"></app-market-filter>
   </div>
 
-  <!-- Card Carousel Section -->
+  COMMENT ME OUTCard Carousel Section
   <div class="carousel-container" fxLayout="column" fxLayoutAlign="center center" *ngFor="let category of filteredCategories | keyvalue">
     <div class="carousel-header" fxLayout="row" fxLayoutAlign="center">
-      <!-- <h4>{{ category.key | marketCategory }}</h4 > -->
+      COMMENT ME OUT<h4>{{ category.key | marketCategory }}</h4 >
     </div>
     <div fxLayout="row" fxLayoutAlign="space-around end">
         <mat-card class="example-card primary">
@@ -42,5 +42,48 @@
         </app-slider>
     </div>
   </div>
-</div>
+</div> -->
 <!-- <app-table></app-table> -->
+<div class="container" fxLayout="row wrap" fxLayoutGap="15px">
+  <h1 fxFlex="100">Market</h1>
+
+  <div class="filter-section" fxFlex="100">
+    <app-market-filter [categories]="categories"></app-market-filter>
+  </div>
+
+  <div class="carousel-container" fxFlex="100" *ngFor="let category of filteredCategories | keyvalue">
+    <!-- <div class="carousel-header" fxLayout="row" fxLayoutAlign="center">
+      <h4>{{ category.key | marketCategory }}</h4 >
+    </div> -->
+    <div fxLayout="row" fxLayoutAlign="space-around end">
+      <mat-card class="example-card primary" fxflex="">
+        <img mat-card-image [src]="category.key | marketImage" alt="Photo of a Shiba Inu">
+        <mat-card-content fxLayoutAlign="center end">
+          <h3>
+            {{ category.key | marketCategory }}
+          </h3>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button></button>
+          <button mat-button></button>
+        </mat-card-actions>
+      </mat-card>
+      <app-slider>
+        <div appSliderItem *ngFor="let consultant of category.value" fxLayout="row" fxFlex>
+          <mat-card class="example-card">
+            <img mat-card-image [src]="consultant.AvatarImage" alt="Photo of consultant">
+            <mat-card-content>
+              <p class="card-text" fxLayoutAlign="center">
+                <span [ngStyle]="{'color': '$primary'}">{{ consultant.FirstName + ' ' + consultant.LastName }}</span>
+              </p>
+              <p class="card-text" fxLayoutAlign="space-around">
+                <span> Joined {{ consultant.DateCreated }} </span>
+                <span> $/HR {{ '$' + consultant.RatePerHour }} </span>
+              </p>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </app-slider>
+    </div>
+  </div>
+</div>

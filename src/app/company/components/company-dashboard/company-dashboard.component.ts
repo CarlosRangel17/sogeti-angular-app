@@ -3,6 +3,7 @@ import { Section } from 'src/app/core/components/dashboard/dashboard-menu-box/da
 import { Dashboard } from 'src/app/core/models/dashboard';
 import { Address } from 'src/app/shared/models/address';
 import { Role } from 'src/app/shared/models/Enumerations';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-company-dashboard',
@@ -15,9 +16,15 @@ export class CompanyDashboardComponent implements OnInit {
     { name: 'Go To Market', route: '/market/company' },
     { name: 'Go To Sogeti Peer', route: '/company' }
   ]};
-  
-  constructor() { 
+  viewMode: string = 'overview';
+
+  constructor(private route: ActivatedRoute, private router: Router) { 
     this.dashboard = new Dashboard('Sogeti Capgemeni', Role.Company, 'sogeti-logo.png', new Address('222 West Las Colinas Blvd', '# 1550', 'Irving', 'TX', '75039'));
+    this.router.events.subscribe(() => {
+      // TODO: Optimization - Logs more than once
+      this.viewMode = this.route.snapshot.paramMap.get('section');
+    });
+    
   }
 
   ngOnInit() {
