@@ -20,14 +20,14 @@
     <div fxFlex="60%" fxShow></div>
     <span class="menu-span" fxLayout="row" fxLayoutAlign="end" fxShow fxHide.lt-md="true">
       <a class="link" mat-button *ngFor="let link of links" [routerLink]="link.path" [routerLinkActive]="['mat-button-toggle-checked', 'active-route']"
-        [routerLinkActiveOptions]="{ exact: true }" #rla="routerLinkActive">
+        [routerLinkActiveOptions]="{ exact: false }" #rla="routerLinkActive">
         {{ link.label }}
       </a>
     </span>
     <!-- Collapsed Nav -->
     <mat-menu #menu="matMenu">
       <button *ngFor="let link of links" mat-menu-item [routerLink]="link.path" [routerLinkActive]="['mat-button-toggle-checked', 'active-route']"
-        [routerLinkActiveOptions]="{ exact: true }" #rla="routerLinkActive">
+        [routerLinkActiveOptions]="{ exact: false }" #rla="routerLinkActive">
         {{ link.label }}
       </button>
     </mat-menu>

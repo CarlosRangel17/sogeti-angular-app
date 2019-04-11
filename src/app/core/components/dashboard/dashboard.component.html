@@ -1,6 +1,13 @@
 <!-- <app-dashboard-header></app-dashboard-header> -->
-<div *ngIf="dashboard" class="header" [ngClass]="dashboard.Role | lowercase" fxLayout="{{ layout }}"
+<div *ngIf="dashboard" class="header" [ngClass]="dashboard.Role | lowercase" fxLayout="{{ layout }} wrap"
   fxLayoutGap="{{ layoutGap }}" fxLayoutAlign="{{ layoutAlign }}" fxFlexFill>
+
+  <div class="db-profile-container-content" fxLayout="column" fxLayoutAlign="center" fxFlex="100%">
+  </div>
+
+  <h1 class="db-profile-role-header" fxLayoutAlign="center" fxFlex="100">{{ dashboard.Role }}</h1>
+  <h3 class="db-profile-role-header" fxLayoutAlign="center" fxFlex="100">({{ dashboard.Role | role }})</h3>
+
   <!-- Avatar -->
   <div class="db-avatar-container" fxFlex.sm="20%" fxFlex="1 1 15%">
     <mat-card>
@@ -9,47 +16,17 @@
       </div>
       <mat-card-header fxLayoutAlign="center">
         <mat-divider></mat-divider>
-        <!-- <div 
-            *ngIf="dashboard.AvatarUrl" 
-            mat-card-avatar 
-            [ngStyle]="
-            {
-              'background-image': 'url(../../../../assets/images/' + dashboard.AvatarUrl + ')',
-              'background-size': 'cover'
-            }"></div> -->
           <mat-card-title>
-            {{ dashboard.Role | role }}
-            <!-- <span class="db-profile-span"></span> -->
+            <span class="db-profile-span">{{ dashboard.Name }}</span>
           </mat-card-title>
         </mat-card-header>
     </mat-card>
   </div>
   <!-- Actor Profile -->
   <div class="db-profile-container" fxLayoutAlign="space-evenly" fxFlex="1 1 40%">
-    <!-- <mat-list fxFlex>
-      <mat-list-item [ngClass]="dashboard.Role | lowercase">
-        <h2>
-          <span class="db-profile-span">
-            {{ dashboard.Name }}
-          </span>
-        </h2>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>
-        <p class="db-profile-paragraph">
-          <span class="db-profile-span">Name:</span> {{ dashboard.Name }}
-        </p>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item>
-        <p class="db-profile-paragraph">
-          <span class="db-profile-span">Address:</span> {{ dashboard.Address.address }}
-        </p>
-      </mat-list-item>
-    </mat-list> -->
-    <button mat-button fx>Test</button>
-    <button mat-button>Test</button>
-    <button mat-button>Test</button>
+    <div class="db-profile-container-content" fxFlex>
+        <ng-content select="profile-content"></ng-content>
+    </div>
   </div>
  
   <!-- Ops -->
@@ -102,12 +79,6 @@
               (click)="updateOption(option.key)">{{ option.key | uppertitlecase }}</button>
         </div>
       </div>
-      <!-- <mat-form-field>
-            <input matInput placeholder="First name">
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput placeholder="Age">
-          </mat-form-field> -->
     </mat-expansion-panel>
   </mat-accordion>
 </div>

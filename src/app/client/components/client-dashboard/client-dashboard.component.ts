@@ -11,7 +11,7 @@ import { Address } from 'src/app/shared/models/address';
 export class ClientDashboardComponent implements OnInit {
   dashboard: Dashboard;
   constructor() { 
-    this.dashboard = new Dashboard('Allied Pilots Association (APA)', Role.Client, 'apa-logo.png', new Address('14600 Trinity Blvd.', 'Suite 500', 'Fort Worth', 'TX', '76155'));
+    this.dashboard = new Dashboard('Allied Pilots Association', Role.Client, 'apa-logo.png', new Address('14600 Trinity Blvd.', 'Suite 500', 'Fort Worth', 'TX', '76155'));
   }
 
   ngOnInit() {

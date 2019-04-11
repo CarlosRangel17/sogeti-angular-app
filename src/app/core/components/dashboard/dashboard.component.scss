@@ -2,8 +2,8 @@
 
 .header {
     padding: 25px;
-    background-color: #fff;;
-    // background-color: #29303A;;
+    // background-color: #fff;;
+    background-color: #29303A;;
   }
 
   // .header.company {
@@ -26,9 +26,15 @@
     // color: $secondary;
   }
 
+  .db-profile-role-header{
+    margin-top: -10px;
+    color: #fff;
+    font-weight: normal;
+  }
+
   .db-profile-container {
-    // background: #29303A;
-    background: #fff;
+    background: #29303A;
+    // background: #fff;
     border-radius: 5px;
   }
   
@@ -44,7 +50,11 @@
 
   .db-profile-span {
       color: $primary-light;
-      font-weight: bold;
+  }
+
+  .db-profile-container-content {
+    border-radius: 5px;
+    background: $primary-dark;
   }
 
   // .db-profile-paragraph {
