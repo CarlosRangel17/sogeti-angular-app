@@ -1,7 +1,13 @@
 <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10px" fxFlex>
   <mat-form-field fxFlex="20%">
     <mat-label>Category</mat-label>
-    <mat-select>
+    <mat-select [formControl]="categoryOptions" multiple>
+      <mat-select-trigger>
+        {{ categoryOptions.value ? (categoryOptions.value[0] | marketCategory) : '' }}
+        <span *ngIf="categoryOptions.value?.length > 1" class="additional-selection">
+          (+{{ categoryOptions.value.length - 1}} {{categoryOptions.value?.length === 2 ? 'other' : 'others' }})
+        </span>
+      </mat-select-trigger>
       <mat-option #categories *ngFor="let category of categories | keyvalue" [value]="category.key">
         {{ category.key | marketCategory }}
       </mat-option>

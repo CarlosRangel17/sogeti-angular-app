@@ -1,17 +1,13 @@
-<div class="zippy">
-  <div 
-    class="zippy-heading"
-    [class.expanded]="isExpanded"
-    (click)="toggle()"    
-    >
-    <h3>{{title}}</h3>
-    <span class="glyphicon"
-      [ngClass]="{
+<div class="zippy" fxFlexLayout="row">
+  <div class="zippy-heading" [class.expanded]="isExpanded" (click)="toggle()">
+    <mat-icon mat-list-icon>cloud</mat-icon>
+    <h3 [style.margin-bottom]="'0px'" fxFlex>{{title}}</h3>
+    <span class="glyphicon" [ngClass]="{
        'glyphicon-chevron-up' : isExpanded,
        'glyphicon-chevron-down' : !isExpanded 
-      }"
-    ></span>
+      }"></span>
   </div>
+  <mat-divider></mat-divider>
   <div *ngIf="isExpanded" class="zippy-body" [@enterAnimation]>
     <ng-content></ng-content>
   </div>

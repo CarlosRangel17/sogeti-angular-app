@@ -23,7 +23,10 @@ import { trigger, transition, style, animate } from '@angular/animations';
 export class ZippyComponent {
   @Input('title') title: string;
   isExpanded: boolean;
-
+  categories: any[] = [
+    { key: 'list', description: 'List View' },
+    { key: 'card', description: 'Card View' }
+  ];
   toggle(){
     this.isExpanded = !this.isExpanded;
   }

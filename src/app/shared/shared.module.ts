@@ -10,6 +10,7 @@ import { AppTableComponent } from './components/app-table/app-table.component';
 import { MarketService } from './services/market.service';
 import { UpperTitleCasePipe } from './pipes/upper-title-case.pipe';
 import { ZippyComponent } from './components/zippy/zippy.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ZippyComponent } from './components/zippy/zippy.component';
   imports: [
     CommonModule,
     MatComponentsModule,
+    ReactiveFormsModule
   ],
   exports: [
     CommonModule,
@@ -33,7 +35,8 @@ import { ZippyComponent } from './components/zippy/zippy.component';
     SliderItemDirective,
     AppTableComponent,
     UpperTitleCasePipe,
-    ZippyComponent
+    ZippyComponent,
+    ReactiveFormsModule
   ],
   providers: [
     MarketService
