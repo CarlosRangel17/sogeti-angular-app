@@ -16,9 +16,7 @@ export class DashboardComponent implements OnInit {
   panelOpenState = false;
   options = [];
   selectedOption = '';
-  constructor(private router: Router, private route: ActivatedRoute) { 
-    console.log('hit');
-  }
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     for (const route of this.router.config) {
@@ -35,8 +33,6 @@ export class DashboardComponent implements OnInit {
     if (!this.selectedOption) {
       this.selectedOption = this.options.length > 0 ? this.options[0].key : '';
     }
-
-    console.log(this.selectedOption);
   }
 
   updateOption(newOption) {

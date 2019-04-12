@@ -9,13 +9,15 @@ import { SliderComponent } from './components/slider/slider.component';
 import { AppTableComponent } from './components/app-table/app-table.component';
 import { MarketService } from './services/market.service';
 import { UpperTitleCasePipe } from './pipes/upper-title-case.pipe';
+import { ZippyComponent } from './components/zippy/zippy.component';
 
 @NgModule({
   declarations: [
     SliderComponent,
     SliderItemDirective,
     AppTableComponent,
-    UpperTitleCasePipe
+    UpperTitleCasePipe,
+    ZippyComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +32,8 @@ import { UpperTitleCasePipe } from './pipes/upper-title-case.pipe';
     SliderComponent,
     SliderItemDirective,
     AppTableComponent,
-    UpperTitleCasePipe
+    UpperTitleCasePipe,
+    ZippyComponent
   ],
   providers: [
     MarketService

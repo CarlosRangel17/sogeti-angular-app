@@ -44,17 +44,38 @@
   </div>
 </div> -->
 <!-- <app-table></app-table> -->
-<div class="container" fxLayout="row wrap" fxLayoutGap="15px">
+<div class="container" fxLayout="row wrap">
   <h1 fxFlex="100">Market</h1>
 
   <div class="filter-section" fxFlex="100">
     <app-market-filter [categories]="categories"></app-market-filter>
   </div>
-
-  <div class="carousel-container" fxFlex="100" *ngFor="let category of filteredCategories | keyvalue">
-    <!-- <div class="carousel-header" fxLayout="row" fxLayoutAlign="center">
+  
+  <zippy title="Recently Added" fxFlex="100">
+    Recently Added Details
+  </zippy>
+  <zippy title="Most Reviewed" fxFlex="100">
+    Most Reviewed Details
+  </zippy>
+  <zippy title="Blockchain" fxFlex="100">
+    Blockchain Details
+  </zippy>
+  <zippy title="Cloud" fxFlex="100">
+    Cloud Details
+  </zippy>
+  <zippy title="Business Analytics" fxFlex="100">
+    Business Analytics Details
+  </zippy>
+  <zippy title="Mobile" fxFlex="100">
+    Mobile Details
+  </zippy>
+  <zippy title="Web" fxFlex="100">
+    Web Details
+  </zippy>
+  <!-- <div class="carousel-container" fxFlex="100" *ngFor="let category of filteredCategories | keyvalue">
+    COMMENT ME OUT<div class="carousel-header" fxLayout="row" fxLayoutAlign="center">
       <h4>{{ category.key | marketCategory }}</h4 >
-    </div> -->
+    </div>
     <div fxLayout="row" fxLayoutAlign="space-around end">
       <mat-card class="example-card primary" fxflex="">
         <img mat-card-image [src]="category.key | marketImage" alt="Photo of a Shiba Inu">
@@ -85,5 +106,5 @@
         </div>
       </app-slider>
     </div>
-  </div>
+  </div> -->
 </div>
