@@ -1,7 +1,7 @@
 <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10px" fxFlex>
   <mat-form-field fxFlex="20%">
     <mat-label>Category</mat-label>
-    <mat-select [formControl]="categoryOptions" multiple>
+    <mat-select #selectList (selectionChange)="filter(selectList.value)" [formControl]="categoryOptions" multiple>
       <mat-select-trigger>
         {{ categoryOptions.value ? (categoryOptions.value[0] | marketCategory) : '' }}
         <span *ngIf="categoryOptions.value?.length > 1" class="additional-selection">
@@ -14,6 +14,11 @@
     </mat-select>
   </mat-form-field>
   <mat-form-field fxFlex="60%">
-    <input matInput placeholder="Search Consultants">
+    <input matInput [formControl]="levelControl" [matAutocomplete]="auto" placeholder="Search Consultants">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of levelOptions" [value]="option">
+        {{option}}
+      </mat-option>
+    </mat-autocomplete>
   </mat-form-field>
 </div>

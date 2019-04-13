@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { Consultant } from '../../models/consultant';
 
 @Component({
   selector: 'zippy',
@@ -22,12 +23,14 @@ import { trigger, transition, style, animate } from '@angular/animations';
 })
 export class ZippyComponent {
   @Input('title') title: string;
+  @Input('icon') icon: string;
+  @Input('assets') assets: Consultant[];
   isExpanded: boolean;
   categories: any[] = [
     { key: 'list', description: 'List View' },
     { key: 'card', description: 'Card View' }
   ];
-  toggle(){
+  toggle() {
     this.isExpanded = !this.isExpanded;
   }
 }

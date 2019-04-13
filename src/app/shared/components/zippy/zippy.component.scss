@@ -35,3 +35,45 @@
 .glyphicon {
     float: right;
 }
+
+/* Asset CSS */
+
+.asset-container {
+    background: #333;
+    padding: 2% 2% 0 2%;
+    border-radius: 5px;
+}
+
+.asset-icon-container {
+    top: 5px;
+    right: 10px;
+    position: absolute;
+    color: $edit;
+    padding: 2px 2px 0px;
+    background: #333;
+    opacity: .9;
+    border-radius: 5px
+}
+
+.img {
+    width: 100%;
+    margin-bottom: 18%;
+  }
+  .card-picture {
+    width: 27%;
+    max-width: 250px;
+    margin-bottom: 2%;
+  }
+  .container {
+    min-height: 100%;
+    width: 100%;
+  }
+  .search-form {
+    // width: 90%;
+  }
+
+button {
+    height: 100%;
+    margin-top: 9px;
+    margin-left: 10px
+}

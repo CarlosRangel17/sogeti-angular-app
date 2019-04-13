@@ -11,6 +11,7 @@ import { MarketService } from './services/market.service';
 import { UpperTitleCasePipe } from './pipes/upper-title-case.pipe';
 import { ZippyComponent } from './components/zippy/zippy.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { IconPipe } from './pipes/icon-pipe';
 
 @NgModule({
   declarations: [
@@ -18,12 +19,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SliderItemDirective,
     AppTableComponent,
     UpperTitleCasePipe,
+    IconPipe,
     ZippyComponent
   ],
   imports: [
     CommonModule,
     MatComponentsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FlexLayoutModule
   ],
   exports: [
     CommonModule,
@@ -35,6 +38,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SliderItemDirective,
     AppTableComponent,
     UpperTitleCasePipe,
+    IconPipe,
     ZippyComponent,
     ReactiveFormsModule
   ],

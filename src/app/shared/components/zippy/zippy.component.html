@@ -1,14 +1,65 @@
-<div class="zippy" fxFlexLayout="row">
-  <div class="zippy-heading" [class.expanded]="isExpanded" (click)="toggle()">
-    <mat-icon mat-list-icon>cloud</mat-icon>
-    <h3 [style.margin-bottom]="'0px'" fxFlex>{{title}}</h3>
+<div class="zippy" fxLayout="row wrap">
+  <div fxLayout="row wrap" fxFlexFill class="zippy-heading" [class.expanded]="isExpanded" (click)="toggle()">
+    <mat-icon fxFlex="100" mat-list-icon>{{ icon }}</mat-icon>
+    <h3 fxFlex="100" [style.margin-bottom]="'0px'">{{ title }}</h3>
     <span class="glyphicon" [ngClass]="{
        'glyphicon-chevron-up' : isExpanded,
-       'glyphicon-chevron-down' : !isExpanded 
+       'glyphicon-chevron-down' : !isExpanded
       }"></span>
   </div>
   <mat-divider></mat-divider>
-  <div *ngIf="isExpanded" class="zippy-body" [@enterAnimation]>
+  <div *ngIf="isExpanded" class="zippy-body" fxLayout="row wrap" fxFlexFill>
     <ng-content></ng-content>
+    <div fxFlexFill>
+      <mat-form-field class="search-form" fxFlex="90%">
+        <input matInput placeholder="Search Picture" type="text">
+      </mat-form-field>
+      <button button="submit" mat-raised-button fxFlex color="primary">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+    <br>
+    <div class="asset-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5%" fxLayoutAlign="center"
+      fxFlexFill>
+      <mat-card class="card-picture" *ngFor="let asset of assets">
+        <img mat-card-image [src]="asset.AvatarImage">
+        <mat-card-title [style.font-size]="'12px'" fxLayout.gt-xs="row wrap" fxLayout.xs="column">
+          <span fxLayoutAlign="space-between" fxFlex="100">
+            <span>{{ asset.DateCreated }}</span>
+            <span>${{ asset.RatePerHour }}/Hr</span>
+          </span>
+          <span [style.margin]="'2%'" [style.font-size]="'14px'" fxLayoutAlign="center" fxFlex>{{asset.FirstName + ' ' + asset.LastName }}</span>
+          <span fxLayoutAlign="space-between" fxFlex="100">
+              <span>{{ asset.SkillType }}</span>
+              <span><mat-icon>{{ asset.SkillType | icon }}</mat-icon></span>
+            </span>
+          <div class="asset-icon-container">
+            <mat-icon>mode_edit</mat-icon>
+            <!-- <mat-icon fxFlex="10%">delete</mat-icon> -->
+          </div>
+        </mat-card-title>
+      </mat-card>
+    </div>
+    <!-- <div fxFlex="33%">
+      <mat-card *ngFor="let asset of assets">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>Shiba Inu</mat-card-title>
+          <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+          <p>
+            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+            bred for hunting.
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+    </div> -->
   </div>
 </div>

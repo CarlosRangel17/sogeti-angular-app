@@ -48,30 +48,15 @@
   <h1 fxFlex="100">Market</h1>
 
   <div class="filter-section" fxFlex="100">
-    <app-market-filter [categories]="categories"></app-market-filter>
+    <app-market-filter [categories]="categories" (filtered)="onFilter($event)"></app-market-filter>
   </div>
   
-  <zippy title="Recently Added" fxFlex="100">
-    Recently Added Details
-  </zippy>
-  <zippy title="Most Reviewed" fxFlex="100">
-    Most Reviewed Details
-  </zippy>
-  <zippy title="Blockchain" fxFlex="100">
-    Blockchain Details
-  </zippy>
-  <zippy title="Cloud" fxFlex="100">
-    Cloud Details
-  </zippy>
-  <zippy title="Business Analytics" fxFlex="100">
-    Business Analytics Details
-  </zippy>
-  <zippy title="Mobile" fxFlex="100">
-    Mobile Details
-  </zippy>
-  <zippy title="Web" fxFlex="100">
-    Web Details
-  </zippy>
+  <zippy 
+    *ngFor="let assetCategory of filteredAssetCategories" 
+    [title]="assetCategory.Key | marketCategory" 
+    [icon]="assetCategory.Icon | icon" 
+    [assets]="assetCategory.Consultants"
+    fxFlex="100"></zippy>
   <!-- <div class="carousel-container" fxFlex="100" *ngFor="let category of filteredCategories | keyvalue">
     COMMENT ME OUT<div class="carousel-header" fxLayout="row" fxLayoutAlign="center">
       <h4>{{ category.key | marketCategory }}</h4 >

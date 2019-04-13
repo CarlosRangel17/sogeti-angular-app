@@ -11,21 +11,73 @@ export class MarketService {
 
   profile: string;
   consultants: Consultant[];
-  categories: MarketCategory[];
-  constructor(
-    private route: ActivatedRoute,
-    private utils: Utils
-  ) {
+  marketCategories: MarketCategory[] = [];
+  constructor(private utils: Utils) {
     // TODO: Figure out how to do this with ActivatedRoute
     let url: any = window.location.href;
     url = url.split('/');
     this.profile = url[url.length - 1];
   }
 
+  getAssetCategories() {
+
+    this.marketCategories = [];
+    // TODO: Replace w/Http Request
+    this.consultants = this.getHardAssets();
+
+    // Format assets here
+    this.consultants.forEach(consultant => {
+      const marketCategory = this.marketCategories.find(category => (category.Key === consultant.SkillType));
+      if (this.marketCategories && marketCategory) {
+        marketCategory.Consultants.push(consultant);
+      } else {
+        this.marketCategories.push({
+          Key: consultant.SkillType,
+          AvatarUrl: '',
+          Icon: consultant.SkillType.toString(),
+          Consultants: [consultant]
+        });
+      }
+    });
+
+    // TODO: Work out logic for 'Most Reviewed' & 'Newly Added' categories
+    const mostReviewed = this.consultants;
+    const newlyAdded = this.consultants;
+    this.marketCategories.push({
+      Key: 0,
+      AvatarUrl: '',
+      Icon: '0',
+      Consultants: mostReviewed
+    });
+    this.marketCategories.push({
+      Key: 1,
+      AvatarUrl: '',
+      Icon: '1',
+      Consultants: newlyAdded
+    });
+
+    return this.marketCategories.sort((a, b) => a.Key - b.Key);
+  }
+
   getMarketAssets() {
 
     // Make HTTP request here
-    this.consultants = [
+    this.consultants = this.getHardAssets();
+
+    // Format to market place category options
+    const categories = this.utils.groupBy(this.consultants,
+      (consultant) => consultant.SkillType);
+
+    const mostReviewed = this.consultants;
+    const newlyAdded = this.consultants;
+    categories.set(0, mostReviewed);
+    categories.set(1, newlyAdded);
+
+    return categories;
+  }
+
+  private getHardAssets() {
+    return [
       {
         DateCreated: '3/22/2019',
         FirstName: 'Carlos',
@@ -87,16 +139,5 @@ export class MarketService {
         Title: 'Sr. Consultant',
       }
     ];
-
-    // Format to market place category options
-    const categories = this.utils.groupBy(this.consultants,
-      (consultant) => consultant.SkillType);
-
-    const mostReviewed = this.consultants;
-    const newlyAdded = this.consultants;
-    categories.set(0, mostReviewed);
-    categories.set(1, newlyAdded);
-
-    return categories;
   }
 }
