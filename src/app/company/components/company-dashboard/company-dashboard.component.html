@@ -3,7 +3,7 @@
       <app-market *ngSwitchCase="'market'" fxFlex></app-market>
       <div *ngSwitchCase="'CEC'">CEC</div>
       <div *ngSwitchCase="'IBP'">IBP</div>
-      <div *ngSwitchCase="'consultants'">Consultants</div>
+      <app-company-consultants *ngSwitchCase="'consultants'" fxFlex></app-company-consultants>
       <div *ngSwitchCase="'transaction-history'">Transaction History</div>
       <div *ngSwitchDefault>Overview</div>
     </ng-container>

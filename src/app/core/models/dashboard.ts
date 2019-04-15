@@ -9,7 +9,7 @@ export class Dashboard {
 
     constructor(
         name: string,
-        role: Role, 
+        role: Role,
         avatarUrl: string,
         address: Address) {
             this.AvatarUrl = avatarUrl;

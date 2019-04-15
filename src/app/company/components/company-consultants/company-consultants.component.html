@@ -1,0 +1,7 @@
+<div class="container" fxLayout="row wrap">
+  <!-- <h1 fxFlex="100">Consultants</h1> -->
+  <ng-container [ngSwitch]="viewMode" class="consultant-content">
+    <div *ngSwitchCase="'new'"></div>
+    <app-manage-consultants [consultants]="consultants" *ngSwitchDefault></app-manage-consultants>
+</ng-container>
+</div>

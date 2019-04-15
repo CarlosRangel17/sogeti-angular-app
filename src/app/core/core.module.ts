@@ -12,6 +12,7 @@ import { NavComponent } from './components/nav/nav.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RolePipe } from './pipes/role-pipe';
 import { DashboardContentComponent } from './components/dashboard/dashboard-content/dashboard-content.component';
+import { DashboardJumbotronComponent } from './components/dashboard/dashboard-jumbotron/dashboard-jumbotron.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DashboardContentComponent } from './components/dashboard/dashboard-cont
     MarketFilterComponent,
     MarketComponent,
     NotFoundComponent,
-    DashboardContentComponent
+    DashboardContentComponent,
+    DashboardJumbotronComponent
   ],
   imports: [
     SharedModule,

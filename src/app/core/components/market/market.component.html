@@ -45,10 +45,10 @@
 </div> -->
 <!-- <app-table></app-table> -->
 <div class="container" fxLayout="row wrap">
-  <h1 fxFlex="100">Market</h1>
+  <!-- <h1 fxFlex="100">Market</h1> -->
 
   <div class="filter-section" fxFlex="100">
-    <app-market-filter [categories]="categories" (filtered)="onFilter($event)"></app-market-filter>
+    <app-market-filter [categories]="assetCategories" (filtered)="onFilter($event)"></app-market-filter>
   </div>
   
   <zippy 

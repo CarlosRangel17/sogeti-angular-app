@@ -1,4 +1,3 @@
-<!-- Dashboard Jumbotron | <app-dashboard-jumbotron></app-dashboard-jumbotron> -->
 <div *ngIf="dashboard" class="header" [ngClass]="dashboard.Role | lowercase" fxLayout="{{ layout }} wrap" fxLayoutGap="{{ layoutGap }}"
   fxLayoutAlign="{{ layoutAlign }}" fxFlexFill>
 
@@ -53,42 +52,4 @@
       <p>I'm visible because I am open</p>
     </mat-expansion-panel>
   </mat-accordion> -->
-</div> <!-- ./app-dashboard-jumbotron -->
-
-<!-- Dashboard Options | <app-dashboard-ops></app-dashboard-ops> -->
-<div fxShow fxHide.gt-sm *ngIf="dashboard" class="ops" fxLayout="row" fxLayoutGap="5px" fxLayoutAlign="space-evenly center">
-  <mat-accordion fxFlexFill>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-description>
-          {{ selectedOption | uppertitlecase }}
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-
-      <div fxLayout="column" fxLayoutGap="15px" fxLayoutAlign="space-evenly center">
-        <mat-divider fxFlexFill></mat-divider>
-        <div fxLayout="row" fxLayoutAlign="space-evenly center" fxFlexFill>
-          <button mat-button *ngFor="let option of options" class="db-option" [class.active]="selectedOption === option.key"
-            [routerLink]="['/' + dashboard.Role.toLowerCase(), option.key]" (click)="updateOption(option.key)">{{
-            option.key | uppertitlecase }}</button>
-        </div>
-      </div>
-    </mat-expansion-panel>
-  </mat-accordion>
-</div>
-<div class="db-ops-menu" fxShow fxHide.lt-md fxLayout="column" fxLayoutGap="15px" fxLayoutAlign="space-evenly center">
-  <div fxFlex></div>
-  <div fxLayout="row" fxLayoutAlign="space-evenly center" fxFlexFill>
-    <!-- This could be a component -->
-    <button mat-button *ngFor="let option of options" class="db-option" [class.active]="selectedOption === option.key"
-      [routerLink]="['/' + dashboard.Role.toLowerCase(), option.key]" (click)="updateOption(option.key)">{{ option.key | uppertitlecase }}</button>
-  </div>
-  <div fxFlex></div>
-</div> <!-- ./ <app-dashboard-ops></app-dashboard-ops> -->
-
-<!-- Dashboard Content -->
-<div class="db-content-container" fxLayout="row">
-  <app-dashboard-content [selected-option]="selectedOption" fxFlex>
-    <ng-content class="dashboard-content" select=".dashboard-content"></ng-content>
-  </app-dashboard-content>
 </div>

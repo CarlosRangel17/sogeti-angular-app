@@ -2,6 +2,7 @@
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 @import 'https://fonts.googleapis.com/css?family=Open+Sans';
 @import 'https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet';
+@import 'variables';
 
 body { 
     /* background-image: url(assets/images/bg-logo-rice.png); */
@@ -23,17 +24,16 @@ a {
 .container {
     margin: 0 auto;
     margin-top: 50px;
+    margin-bottom: 50px;
     max-width: 1280px;
-    width: 90%;
+    width: 75%;
 }
 
-@media only screen and (min-width: 601px)
-{
-    .container {
-        /* width: 85%; */
-    }
+.form-control:focus {
+    border-color: $primary-light;
+    box-shadow: 0 0 0 0.1rem $primary-light;
 }
-
+  
 /* Material Styling */
 mat-icon {
     cursor: pointer;

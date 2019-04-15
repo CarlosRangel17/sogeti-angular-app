@@ -8,8 +8,8 @@
           (+{{ categoryOptions.value.length - 1}} {{categoryOptions.value?.length === 2 ? 'other' : 'others' }})
         </span>
       </mat-select-trigger>
-      <mat-option #categories *ngFor="let category of categories | keyvalue" [value]="category.key">
-        {{ category.key | marketCategory }}
+      <mat-option #categories *ngFor="let category of categories" [value]="category.Key">
+        {{ category.Key | marketCategory }}
       </mat-option>
     </mat-select>
   </mat-form-field>

@@ -7,10 +7,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { SliderItemDirective } from './components/slider/slider-item.directive';
 import { SliderComponent } from './components/slider/slider.component';
 import { AppTableComponent } from './components/app-table/app-table.component';
-import { MarketService } from './services/market.service';
+import { ConsultantService } from './services/consultant.service';
 import { UpperTitleCasePipe } from './pipes/upper-title-case.pipe';
 import { ZippyComponent } from './components/zippy/zippy.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { IconPipe } from './pipes/icon-pipe';
 
 @NgModule({
@@ -43,7 +43,7 @@ import { IconPipe } from './pipes/icon-pipe';
     ReactiveFormsModule
   ],
   providers: [
-    MarketService
+    ConsultantService
   ]
 })
 export class SharedModule { }

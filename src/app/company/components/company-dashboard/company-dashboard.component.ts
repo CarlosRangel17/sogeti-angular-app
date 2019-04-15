@@ -16,17 +16,18 @@ export class CompanyDashboardComponent implements OnInit {
     { name: 'Go To Market', route: '/market/company' },
     { name: 'Go To Sogeti Peer', route: '/company' }
   ]};
-  viewMode: string = 'overview';
+  viewMode = 'overview';
 
-  constructor(private route: ActivatedRoute, private router: Router) { 
-    this.dashboard = new Dashboard('Sogeti Capgemeni', Role.Company, 'sogeti-logo.png', new Address('222 West Las Colinas Blvd', '# 1550', 'Irving', 'TX', '75039'));
+  constructor(private route: ActivatedRoute, private router: Router) {
+    this.dashboard = new Dashboard('Sogeti Capgemeni', Role.Company, 'sogeti-logo.png',
+      new Address('222 West Las Colinas Blvd', '# 1550', 'Irving', 'TX', '75039'));
       // TODO: Optimization - Logs more than once
     this.router.events.subscribe(() => {
       this.viewMode = this.route.snapshot.paramMap.get('section');
     });
-    
+
   }
 
   ngOnInit() {
-  } 
+  }
 }

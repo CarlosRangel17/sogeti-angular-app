@@ -1,29 +1,23 @@
 import { Injectable } from '@angular/core';
 import { Consultant } from '../models/consultant';
-import { Utils } from '../utilities/utils';
 import { MarketCategory } from '../../core/models/market-category';
-import { ActivatedRoute } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MarketService {
-
-  profile: string;
+export class ConsultantService {
   consultants: Consultant[];
   marketCategories: MarketCategory[] = [];
-  constructor(private utils: Utils) {
-    // TODO: Figure out how to do this with ActivatedRoute
-    let url: any = window.location.href;
-    url = url.split('/');
-    this.profile = url[url.length - 1];
+  constructor() { }
+
+  getConsultants() {
+    return this.getHardCodedConsultants();
   }
 
-  getAssetCategories() {
-
+  getMarketConsultants() {
     this.marketCategories = [];
     // TODO: Replace w/Http Request
-    this.consultants = this.getHardAssets();
+    this.consultants = this.getConsultants();
 
     // Format assets here
     this.consultants.forEach(consultant => {
@@ -59,24 +53,7 @@ export class MarketService {
     return this.marketCategories.sort((a, b) => a.Key - b.Key);
   }
 
-  getMarketAssets() {
-
-    // Make HTTP request here
-    this.consultants = this.getHardAssets();
-
-    // Format to market place category options
-    const categories = this.utils.groupBy(this.consultants,
-      (consultant) => consultant.SkillType);
-
-    const mostReviewed = this.consultants;
-    const newlyAdded = this.consultants;
-    categories.set(0, mostReviewed);
-    categories.set(1, newlyAdded);
-
-    return categories;
-  }
-
-  private getHardAssets() {
+  private getHardCodedConsultants() {
     return [
       {
         DateCreated: '3/22/2019',
