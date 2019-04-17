@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Section } from 'src/app/core/components/dashboard/dashboard-menu-box/dashboard-menu-box.component';
 import { Dashboard } from 'src/app/core/models/dashboard';
 import { Address } from 'src/app/shared/models/address';
-import { Role } from 'src/app/shared/models/Enumerations';
+import { Role } from 'src/app/shared/models/enumerations';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({

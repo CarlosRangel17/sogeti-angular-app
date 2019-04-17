@@ -1,5 +1,5 @@
 import { Address } from 'src/app/shared/models/address';
-import { Role } from 'src/app/shared/models/Enumerations';
+import { Role } from 'src/app/shared/models/enumerations';
 
 export class Dashboard {
     AvatarUrl: string;
