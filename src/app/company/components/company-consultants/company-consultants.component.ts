@@ -11,19 +11,27 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CompanyConsultantsComponent implements OnInit {
   consultants: Consultant[] = [];
   viewMode = '';
+  category = '';
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private consultantService: ConsultantService
     ) {
+      // TODOD: switchMap & .subscribe & applyFilter | see products.component.ts (organic-shop)
     this.consultants = this.consultantService.getConsultants();
-    console.log(this.consultants);
     this.router.events.subscribe(() => {
-      this.viewMode = this.route.snapshot.paramMap.get('');
+      // console.log('id:', this.route.snapshot.paramMap.get('id'));
+      // console.log('category:',  this.route.snapshot.queryParamMap.get('category'));
+      this.category = this.route.snapshot.queryParamMap.get('category');
     });
   }
 
   ngOnInit() {
+  }
+
+  onViewChange(view: string) {
+    console.log('view:', view);
+    this.viewMode = view;
   }
 }

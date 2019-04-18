@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { Consultant } from 'src/app/shared/models/consultant';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,22 +9,20 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./manage-consultants.component.css']
 })
 export class ManageConsultantsComponent implements OnInit {
-
   // tslint:disable-next-line:no-input-rename
   @Input('consultants') consultants: Consultant[] = [];
-  displayedColumns: string[] = ['avatar', 'name', 'date-hired', 'title', 'skill', 'rate', 'client'];
+  @Output('viewChange') viewChange = new EventEmitter<any>();
+
+  displayedColumns: string[] = ['avatar', 'name', 'title', 'skill', 'rate', 'date-hired', 'client', 'edit'];
   dataSource: MatTableDataSource<Consultant>;
-  viewMode = '';
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
-  ) {
-    this.router.events.subscribe(() => {
-      this.viewMode = this.route.snapshot.url[this.route.snapshot.url.length - 1].path;
-      console.log(this.viewMode);
-    });
+    private route: ActivatedRoute,
+  ) { 
+    const view = this.route.snapshot.paramMap.get('view');
+    console.log(view);
   }
 
   ngOnInit() {
@@ -32,4 +30,10 @@ export class ManageConsultantsComponent implements OnInit {
     this.dataSource = new MatTableDataSource<Consultant>(this.consultants);
     this.dataSource.paginator = this.paginator;
   }
+
+  viewFilter(view) {
+    // console.log('emit view:', view);
+    this.viewChange.emit(view);
+  }
+
 }

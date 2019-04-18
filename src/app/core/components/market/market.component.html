@@ -55,7 +55,7 @@
   <zippy 
     *ngFor="let assetCategory of filteredAssetCategories" 
     [title]="assetCategory.Key | marketCategory" 
-    [icon]="assetCategory.Icon | icon" 
+    [icon]="assetCategory.Icon | marketIcon" 
     [assets]="assetCategory.Consultants"
     fxFlex="100"></zippy>
   <!-- <div class="carousel-container" fxFlex="100" *ngFor="let category of filteredCategories | keyvalue">

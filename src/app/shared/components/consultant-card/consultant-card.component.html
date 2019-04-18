@@ -1,0 +1,18 @@
+<mat-card class="card-picture" *ngIf="consultant.FirstName || consultant.LastName" [style.width]="fullWidth ? '100%': '27%'">
+    <img *ngIf="consultant && consultant.AvatarImage" mat-card-image [src]="consultant.AvatarImage">
+    <mat-card-title [style.font-size]="'12px'" fxLayout.gt-xs="row wrap" fxLayout.xs="column">
+      <span fxLayoutAlign="space-between" fxFlex="100">
+        <span>{{ consultant.DateCreated }}</span>
+        <span>${{ consultant.RatePerHour }}/Hr</span>
+      </span>
+      <span [style.margin]="'2%'" [style.font-size]="'14px'" fxLayoutAlign="center" fxFlex>{{consultant.FirstName + ' ' + consultant.LastName }}</span>
+      <span fxLayoutAlign="space-between" fxFlex="100">
+          <span>{{ consultant.Title }}</span>
+          <span><mat-icon>{{ consultant.SkillType | icon }}</mat-icon></span>
+      </span>
+      <div *ngIf="showActions" class="consultant-icon-container">
+        <mat-icon>mode_edit</mat-icon>
+        <!-- <mat-icon fxFlex="10%">delete</mat-icon> -->
+      </div>
+    </mat-card-title>
+  </mat-card>

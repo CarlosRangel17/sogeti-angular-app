@@ -16,6 +16,8 @@ export class MarketCategoryPipe implements PipeTransform {
       case 4:
         return 'Mobile';
       case 5:
+        return 'Cloud';
+      case 6:
         return 'Business Analytics';
     }
   }

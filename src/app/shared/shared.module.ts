@@ -10,8 +10,11 @@ import { AppTableComponent } from './components/app-table/app-table.component';
 import { ConsultantService } from './services/consultant.service';
 import { UpperTitleCasePipe } from './pipes/upper-title-case.pipe';
 import { ZippyComponent } from './components/zippy/zippy.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { IconPipe } from './pipes/icon-pipe';
+import { ConsultantCardComponent } from './components/consultant-card/consultant-card.component';
+import { CustomFormsModule } from 'ng2-validation';
+import { MarketIconPipe } from './pipes/market-icon.pipe';
 
 @NgModule({
   declarations: [
@@ -20,13 +23,17 @@ import { IconPipe } from './pipes/icon-pipe';
     AppTableComponent,
     UpperTitleCasePipe,
     IconPipe,
-    ZippyComponent
+    MarketIconPipe,
+    ZippyComponent,
+    ConsultantCardComponent
   ],
   imports: [
     CommonModule,
     MatComponentsModule,
     ReactiveFormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FormsModule,
+    CustomFormsModule
   ],
   exports: [
     CommonModule,
@@ -39,8 +46,12 @@ import { IconPipe } from './pipes/icon-pipe';
     AppTableComponent,
     UpperTitleCasePipe,
     IconPipe,
+    MarketIconPipe,
     ZippyComponent,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ConsultantCardComponent,
+    FormsModule,
+    CustomFormsModule
   ],
   providers: [
     ConsultantService

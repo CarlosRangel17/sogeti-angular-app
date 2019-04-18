@@ -1,5 +1,5 @@
 export interface Consultant {
-    // Id: number;
+    Id: string;
     DateCreated: string;
     FirstName: string;
     LastName: string;

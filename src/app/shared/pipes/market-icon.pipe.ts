@@ -1,19 +1,23 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({ name: 'icon' })
-export class IconPipe implements PipeTransform {
+@Pipe({ name: 'marketIcon' })
+export class MarketIconPipe implements PipeTransform {
     transform(value: string): string {
         const formatValue = value ? value.toString() : '';
         switch (formatValue) {
+            case '0':
+                return 'person';
             case '1':
-                return 'code';
+                return 'star_rate';
             case '2':
-                return 'web';
+                return 'code';
             case '3':
-                return 'smartphone';
+                return 'web';
             case '4':
-                return 'cloud';
+                return 'smartphone';
             case '5':
+                return 'cloud';
+            case '6':
                 return 'bar_chart';
         }
     }

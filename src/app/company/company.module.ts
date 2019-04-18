@@ -5,17 +5,16 @@ import { SharedModule } from '../shared/shared.module';
 import { CompanyDashboardComponent } from './components/company-dashboard/company-dashboard.component';
 import { CoreModule } from '../core/core.module';
 import { CompanyConsultantsComponent } from './components/company-consultants/company-consultants.component';
-import { CosultantFormComponent } from './components/cosultant-form/cosultant-form.component';
 import { ManageConsultantsComponent } from './components/company-consultants/manage-consultants/manage-consultants.component';
-import { NewConsultantComponent } from './components/company-consultants/new-consultant/new-consultant.component';
+import { ConsultantFormComponent } from './components/consultant-form/consultant-form.component';
 
 @NgModule({
   declarations: [
     CompanyDashboardComponent,
     CompanyConsultantsComponent,
-    CosultantFormComponent,
+    ConsultantFormComponent,
     ManageConsultantsComponent,
-    NewConsultantComponent
+    ConsultantFormComponent
   ],
   imports: [
     CommonModule,
