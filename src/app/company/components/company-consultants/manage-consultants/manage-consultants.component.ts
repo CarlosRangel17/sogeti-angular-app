@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { Consultant } from 'src/app/shared/models/consultant';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ConsultantService } from 'src/app/shared/services/consultant.service';
 
 @Component({
   selector: 'app-manage-consultants',
@@ -13,7 +12,7 @@ export class ManageConsultantsComponent implements OnInit {
 
   // tslint:disable-next-line:no-input-rename
   @Input('consultants') consultants: Consultant[] = [];
-  displayedColumns: string[] = ['name', 'date-hired', 'title', 'skill', 'rate', 'client'];
+  displayedColumns: string[] = ['avatar', 'name', 'date-hired', 'title', 'skill', 'rate', 'client'];
   dataSource: MatTableDataSource<Consultant>;
   viewMode = '';
 
@@ -22,14 +21,15 @@ export class ManageConsultantsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
   ) {
-    console.log(this.consultants);
-    this.dataSource = new MatTableDataSource<Consultant>(this.consultants);
     this.router.events.subscribe(() => {
-      this.viewMode = this.route.snapshot.paramMap.get('');
+      this.viewMode = this.route.snapshot.url[this.route.snapshot.url.length - 1].path;
+      console.log(this.viewMode);
     });
   }
 
   ngOnInit() {
+    // console.log('ngOnInit:', this.consultants);
+    this.dataSource = new MatTableDataSource<Consultant>(this.consultants);
     this.dataSource.paginator = this.paginator;
   }
 }

@@ -14,7 +14,7 @@ import { CoreModule } from '../core/core.module';
     RouterModule.forChild([
       { path: 'consultant/:section', component: ConsultantDashboardComponent },
       { 
-        path: 'consultant', 
+        path: 'consultant',
         component: ConsultantDashboardComponent,
         data: {
           label: 'Consultant',
