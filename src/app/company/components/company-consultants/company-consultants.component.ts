@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CompanyConsultantsComponent implements OnInit {
   consultants: Consultant[] = [];
   viewMode = '';
-  category = '';
+  category = 'All';
 
   constructor(
     private route: ActivatedRoute,
@@ -22,8 +22,8 @@ export class CompanyConsultantsComponent implements OnInit {
     this.consultants = this.consultantService.getConsultants();
     this.router.events.subscribe(() => {
       // console.log('id:', this.route.snapshot.paramMap.get('id'));
-      // console.log('category:',  this.route.snapshot.queryParamMap.get('category'));
       this.category = this.route.snapshot.queryParamMap.get('category');
+      console.log('category:', this.category);
     });
   }
 

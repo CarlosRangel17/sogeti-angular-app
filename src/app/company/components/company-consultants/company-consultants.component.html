@@ -2,6 +2,6 @@
   <!-- <h1 fxFlex="100">Consultants</h1> -->
   <ng-container [ngSwitch]="viewMode" class="consultant-content">
     <app-consultant-form  (viewChange)="onViewChange($event)" *ngSwitchCase="'new'" fxFlexFill></app-consultant-form>
-    <app-manage-consultants (viewChange)="onViewChange($event)" [consultants]="consultants" *ngSwitchDefault></app-manage-consultants>
+    <app-manage-consultants (viewChange)="onViewChange($event)" [consultants]="consultants" [category]="category" *ngSwitchDefault></app-manage-consultants>
 </ng-container>
 </div>
