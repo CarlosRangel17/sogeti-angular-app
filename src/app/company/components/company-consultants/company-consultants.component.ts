@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./company-consultants.component.css']
 })
 export class CompanyConsultantsComponent implements OnInit {
+  filteredConsultants: Consultant[] = [];
   consultants: Consultant[] = [];
   viewMode = '';
   category = 'All';
@@ -19,15 +20,34 @@ export class CompanyConsultantsComponent implements OnInit {
     private consultantService: ConsultantService
     ) {
       // TODOD: switchMap & .subscribe & applyFilter | see products.component.ts (organic-shop)
-    this.consultants = this.consultantService.getConsultants();
+    this.consultants = this.filteredConsultants = this.consultantService.getConsultants();
     this.router.events.subscribe(() => {
       // console.log('id:', this.route.snapshot.paramMap.get('id'));
       this.category = this.route.snapshot.queryParamMap.get('category');
-      console.log('category:', this.category);
+      // console.log('category:', this.category);
+      this.applyFilter();
     });
   }
 
   ngOnInit() {
+  }
+
+  private applyFilter() {
+    console.log('apply:', this.category);
+    switch (this.category) {
+      case 'Pending':
+        this.filteredConsultants = this.consultants.filter(consultant => consultant.ClientId);
+        break;
+      case 'FTE':
+        this.filteredConsultants = this.consultants.filter(consultant => consultant.ClientId);
+        break;
+      case 'ATO':
+        this.filteredConsultants = this.consultants.filter(consultant => !consultant.ClientId);
+        break;
+      default:
+        this.filteredConsultants = this.consultants;
+    }
+    console.log(this.filteredConsultants);
   }
 
   onViewChange(view: string) {

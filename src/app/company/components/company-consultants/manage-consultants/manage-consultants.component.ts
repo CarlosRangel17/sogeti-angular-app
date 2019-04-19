@@ -9,8 +9,6 @@ import { MatTableDataSource, MatPaginator } from '@angular/material';
 })
 export class ManageConsultantsComponent implements OnInit {
   // tslint:disable-next-line:no-input-rename
-  @Input('category') category = '';
-  // tslint:disable-next-line:no-input-rename
   @Input('consultants') consultants: Consultant[] = [];
   // tslint:disable-next-line:no-output-rename
   @Output('viewChange') viewChange = new EventEmitter<any>();
@@ -25,7 +23,6 @@ export class ManageConsultantsComponent implements OnInit {
     // console.log('ngOnInit:', this.consultants);
     this.dataSource = new MatTableDataSource<Consultant>(this.consultants);
     this.dataSource.paginator = this.paginator;
-    console.log('category:', this.category);
   }
 
   viewFilter(view) {

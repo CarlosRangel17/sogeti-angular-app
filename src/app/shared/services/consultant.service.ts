@@ -24,7 +24,7 @@ export class ConsultantService {
   }
 
   getConsultantSkills(): ConsultantSkill[] {
-    return this.getHardCodedSkills().sort((a,b) => a.Name.localeCompare(b.Name));
+    return this.getHardCodedSkills().sort((a, b) => a.Name.localeCompare(b.Name));
   }
 
   getMarketConsultants() {
@@ -35,12 +35,12 @@ export class ConsultantService {
     // Format assets here
     this.consultants.forEach(consultant => {
       const marketCategory = this.marketCategories.find(category => (category.Key === consultant.SkillType));
-      // For market category purposes 
+      // For market category purposes
       if (this.marketCategories && marketCategory) {
         marketCategory.Consultants.push(consultant);
       } else {
         this.marketCategories.push({
-          Key: consultant.SkillType, 
+          Key: consultant.SkillType,
           AvatarUrl: '',
           Icon: consultant.SkillType.toString(),
           Consultants: [consultant]
@@ -105,7 +105,7 @@ export class ConsultantService {
         Name: 'Business Analytics',
         Icon: 'bar_chart'
       }
-    ]
+    ];
   }
 
   private getHardCodedConsultants() {
@@ -120,6 +120,7 @@ export class ConsultantService {
         RatePerHour: 25,
         SkillType: 1,
         Title: 'Sr. Consultant',
+        ClientId: ''
       },
       {
         Id: '2',
@@ -131,6 +132,7 @@ export class ConsultantService {
         RatePerHour: 25,
         SkillType: 5,
         Title: 'Sr. Consultant',
+        ClientId: ''
       },
       {
         Id: '3',
@@ -142,6 +144,7 @@ export class ConsultantService {
         RatePerHour: 25,
         SkillType: 4,
         Title: 'Manager',
+        ClientId: ''
       },
       {
         Id: '4',
@@ -153,6 +156,7 @@ export class ConsultantService {
         RatePerHour: 25,
         SkillType: 2,
         Title: 'Sr. Consultant',
+        ClientId: ''
       },
       {
         Id: '5',
@@ -164,6 +168,7 @@ export class ConsultantService {
         RatePerHour: 25,
         SkillType: 5,
         Title: 'Sr. Consultant',
+        ClientId: ''
       },
       {
         Id: '6',
@@ -175,6 +180,7 @@ export class ConsultantService {
         RatePerHour: 25,
         SkillType: 2,
         Title: 'Sr. Consultant',
+        ClientId: ''
       }
     ];
   }
