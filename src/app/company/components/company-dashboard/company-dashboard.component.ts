@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Section } from 'src/app/core/components/dashboard/dashboard-menu-box/dashboard-menu-box.component';
 import { Dashboard } from 'src/app/core/models/dashboard';
 import { Address } from 'src/app/shared/models/address';
 import { Role } from 'src/app/shared/models/enumerations';
@@ -12,11 +11,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class CompanyDashboardComponent implements OnInit {
   dashboard: Dashboard;
-  company: Section = { title: 'Company', subtitle: 'Supplier', boxColor: 'blue', links: [
-    { name: 'Go To Market', route: '/market/company' },
-    { name: 'Go To Sogeti Peer', route: '/company' }
-  ]};
   viewMode = 'overview';
+  id = '';
 
   constructor(private route: ActivatedRoute, private router: Router) {
     this.dashboard = new Dashboard('Sogeti Capgemeni', Role.Company, 'sogeti-logo.png',
@@ -24,8 +20,10 @@ export class CompanyDashboardComponent implements OnInit {
       // TODO: Optimization - Logs more than once
     this.router.events.subscribe(() => {
       this.viewMode = this.route.snapshot.paramMap.get('section');
+      // Pass id into app-company-consultant component
+      // console.log('id:', this.route.snapshot.paramMap.get('id'));
+      this.id = this.route.snapshot.paramMap.get('id');
     });
-
   }
 
   ngOnInit() {

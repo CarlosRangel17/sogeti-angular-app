@@ -46,3 +46,23 @@
     background-color: transparent;
     border-radius: 5px;
   }
+
+  .selected-header {
+    background-color: $warn;
+  }
+  .selected-header:hover {
+    background-color: $warn-dark !important;
+  }
+
+  .mat-expansion-panel.mat-expanded,
+  .mat-expansion-panel.mat-expanded:hover {
+    background-color: $warn;
+  }
+
+  ::ng-deep .selected-header > .mat-content > .mat-expansion-panel-header-title  {
+    color: #fff !important;
+  }
+
+  ::ng-deep .selected-header > .mat-expansion-indicator:after {
+    color: white !important;
+  }

@@ -36,7 +36,8 @@ export class ConsultantFormComponent implements OnInit {
         AvatarImage: '',
         Title: '',
         RatePerHour: null,
-        SkillType: 0
+        SkillType: 0,
+        ClientId: ''
       }
     }
   }

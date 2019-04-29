@@ -15,14 +15,36 @@ export class ManageConsultantsComponent implements OnInit {
 
   displayedColumns: string[] = ['avatar', 'name', 'title', 'skill', 'rate', 'date-hired', 'client', 'edit'];
   dataSource: MatTableDataSource<Consultant>;
+  filteredConsultants: Consultant[] = [];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  constructor() { }
+  constructor() { 
+    this.filteredConsultants = this.consultants;
+  }
 
   ngOnInit() {
     // console.log('ngOnInit:', this.consultants);
     this.dataSource = new MatTableDataSource<Consultant>(this.consultants);
     this.dataSource.paginator = this.paginator;
+  }
+
+  applyFilter(category: string) {
+    // console.log('apply:', this.category);
+    switch (category) {
+      case 'Pending':
+        this.filteredConsultants = this.consultants.filter(consultant => consultant.ClientId);
+    break;
+      case 'FTE':
+        this.filteredConsultants = this.consultants.filter(consultant => consultant.ClientId);
+        break;
+      case 'ATO':
+        this.filteredConsultants = this.consultants.filter(consultant => !consultant.ClientId);
+        break;
+      default:
+        this.filteredConsultants = this.consultants;
+    }
+    this.dataSource = new MatTableDataSource<Consultant>(this.filteredConsultants);
+    console.log(this.filteredConsultants);
   }
 
   viewFilter(view) {

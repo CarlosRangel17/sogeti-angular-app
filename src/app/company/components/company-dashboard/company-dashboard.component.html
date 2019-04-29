@@ -1,9 +1,10 @@
 <app-dashboard [dashboard]="dashboard" layout="row" layout-gap="25px" layout-align="center stretch" flex-fill="true">
     <ng-container [ngSwitch]="viewMode" class="dashboard-content">
-      <app-market *ngSwitchCase="'market'" fxFlex></app-market>
+      <app-market *ngSwitchCase="'market'" [is-admin]="true" fxFlex></app-market>
       <div *ngSwitchCase="'CEC'">CEC</div>
       <div *ngSwitchCase="'IBP'">IBP</div>
-      <app-company-consultants *ngSwitchCase="'consultants'" fxFlex></app-company-consultants>
+      <div *ngSwitchCase="'contracts'">Contracts</div>
+      <app-company-consultants *ngSwitchCase="'consultants'" fxFlex [id]="id"></app-company-consultants>
       <div *ngSwitchCase="'transaction-history'">Transaction History</div>
       <div *ngSwitchDefault>Overview</div>
     </ng-container>

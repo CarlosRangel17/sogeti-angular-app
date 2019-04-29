@@ -21,6 +21,10 @@
     <br>
     <div class="asset-container" fxLayout="row wrap" fxLayout.xs="column" fxLayoutGap="0.5%" fxLayoutAlign="center"
       fxFlexFill>
+      <ng-container *ngFor="let asset of assets">
+        <app-consultant-card [consultant]="asset" [showActions]="isAdmin" [showMarketActions]="!isAdmin" [full-width]="true" fxLayout="row" fxLayoutAlign="center"></app-consultant-card>
+      </ng-container>
+<!-- 
       <mat-card class="card-picture" *ngFor="let asset of assets">
         <img mat-card-image [src]="asset.AvatarImage">
         <mat-card-title [style.font-size]="'12px'" fxLayout.gt-xs="row wrap" fxLayout.xs="column">
@@ -35,10 +39,10 @@
             </span>
           <div class="asset-icon-container">
             <mat-icon>mode_edit</mat-icon>
-            <!-- <mat-icon fxFlex="10%">delete</mat-icon> -->
+            <mat-icon fxFlex="10%">delete</mat-icon> TODO REMOVE
           </div>
         </mat-card-title>
-      </mat-card>
+      </mat-card> -->
     </div>
   </div>
 </div>

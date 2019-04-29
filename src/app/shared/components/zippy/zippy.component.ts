@@ -22,6 +22,7 @@ import { Consultant } from '../../models/consultant';
   ],
 })
 export class ZippyComponent {
+  @Input('is-admin') isAdmin: boolean = false;
   @Input('title') title: string;
   @Input('icon') icon: string;
   @Input('assets') assets: Consultant[];

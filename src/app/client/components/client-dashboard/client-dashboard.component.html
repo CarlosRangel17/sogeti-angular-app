@@ -1,3 +1,6 @@
 <app-dashboard [dashboard]="dashboard" layout="row" layout-gap="25px" layout-align="center stretch" flex-fill="true">
-  <!-- I want to add ng-content here -->
-</app-dashboard>
+  <ng-container [ngSwitch]="viewMode" class="dashboard-content">
+    <app-market *ngSwitchCase="'market'" [is-admin]="false" fxFlex></app-market>
+    <div *ngSwitchCase="'transaction-history'">Transaction History</div>
+    <div *ngSwitchDefault>Overview</div>
+</ng-container></app-dashboard>

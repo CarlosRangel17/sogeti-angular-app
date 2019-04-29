@@ -7,7 +7,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule, MatAutocompleteModule } from '@angular/material';
+import { MatListModule, MatAutocompleteModule, MatButtonToggleModule, MatSliderModule, MatCheckboxModule } from '@angular/material';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -37,7 +37,10 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatSelectModule,
     MatDividerModule,
     MatTabsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatButtonToggleModule,
+    MatSliderModule,
+    MatCheckboxModule
   ],
   exports: [
     MatToolbarModule,
@@ -57,7 +60,10 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatSelectModule,
     MatDividerModule,
     MatTabsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatButtonToggleModule,
+    MatSliderModule,
+    MatCheckboxModule
   ]
 })
 export class MatComponentsModule { }

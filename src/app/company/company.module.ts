@@ -32,9 +32,10 @@ import { ConsultantFormComponent } from './components/consultant-form/consultant
           icon: '<add icon info here>',
           sublinks: [
             'overview',
-            'CEC',
-            'IBP',
+            // 'CEC',
+            // 'IBP',
             'market',
+            'contracts',
             'consultants',
             'transaction-history'
           ]

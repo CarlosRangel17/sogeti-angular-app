@@ -15,6 +15,7 @@ import { IconPipe } from './pipes/icon-pipe';
 import { ConsultantCardComponent } from './components/consultant-card/consultant-card.component';
 import { CustomFormsModule } from 'ng2-validation';
 import { MarketIconPipe } from './pipes/market-icon.pipe';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { MarketIconPipe } from './pipes/market-icon.pipe';
     ReactiveFormsModule,
     FlexLayoutModule,
     FormsModule,
-    CustomFormsModule
+    CustomFormsModule,
+    RouterModule.forChild([])
   ],
   exports: [
     CommonModule,

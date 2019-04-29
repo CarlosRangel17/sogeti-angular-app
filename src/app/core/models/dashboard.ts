@@ -15,7 +15,6 @@ export class Dashboard {
             this.AvatarUrl = avatarUrl;
             this.Role = role;
             this.Name = name;
-            console.log(address);
             this.Address = address;
         }
 }

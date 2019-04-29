@@ -26,8 +26,7 @@ export class NavComponent implements OnInit {
         });
       }
     }
-
-    console.log(JSON.stringify(this.links));
+    // console.log(JSON.stringify(this.links));
   }
 
   selectCategory(category) {

@@ -8,10 +8,10 @@
       </button>
     </div>
     <div class="filter-section" fxLayoutAlign="end" fxFlex>
-      <button mat-button routerLink="/company/consultants" [queryParams]="{category: 'All'}" color="primary">All</button>
-      <button mat-button routerLink="/company/consultants" [queryParams]="{category: 'ATO'}" color="primary">ATO</button>
-      <button mat-button routerLink="/company/consultants" [queryParams]="{category: 'Pending'}" color="primary">Pending</button>
-      <button mat-button routerLink="/company/consultants" [queryParams]="{category: 'FTE'}" color="primary">FTE</button>
+      <button mat-button routerLink="/company/consultants" [queryParams]="{category: 'All'}" (click)="applyFilter('All')" color="primary">All</button>
+      <button mat-button routerLink="/company/consultants" [queryParams]="{category: 'ATO'}" (click)="applyFilter('ATO')" color="primary">ATO</button>
+      <button mat-button routerLink="/company/consultants" [queryParams]="{category: 'Pending'}" (click)="applyFilter('Pending')" color="primary">Pending</button>
+      <button mat-button routerLink="/company/consultants" [queryParams]="{category: 'FTE'}" (click)="applyFilter('FTE')" color="primary">FTE</button>
     </div>
     <mat-form-field [style.margin-top]="'2px'" [style.font-size]="'12px'" fxFlex="100">
       <input fxFlex matInput #query (keyup)="filter(query.value)" placeholder="Search Consultants...">

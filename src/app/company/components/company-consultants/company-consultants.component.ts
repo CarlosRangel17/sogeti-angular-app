@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Consultant } from 'src/app/shared/models/consultant';
 import { ConsultantService } from 'src/app/shared/services/consultant.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,10 +9,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./company-consultants.component.css']
 })
 export class CompanyConsultantsComponent implements OnInit {
-  filteredConsultants: Consultant[] = [];
   consultants: Consultant[] = [];
   viewMode = '';
-  category = 'All';
+  category = '';
+  @Input('id') id: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -20,38 +20,23 @@ export class CompanyConsultantsComponent implements OnInit {
     private consultantService: ConsultantService
     ) {
       // TODOD: switchMap & .subscribe & applyFilter | see products.component.ts (organic-shop)
-    this.consultants = this.filteredConsultants = this.consultantService.getConsultants();
-    this.router.events.subscribe(() => {
-      // console.log('id:', this.route.snapshot.paramMap.get('id'));
-      this.category = this.route.snapshot.queryParamMap.get('category');
-      // console.log('category:', this.category);
-      this.applyFilter();
-    });
+    this.consultants = this.consultantService.getConsultants();
+   
+    // this.router.events.subscribe(() => {
+    //   console.log('id:', this.route.snapshot.paramMap.get('id'));
+    //   this.id = this.route.snapshot.paramMap.get('id');
+    // });
   }
 
   ngOnInit() {
-  }
-
-  private applyFilter() {
-    console.log('apply:', this.category);
-    switch (this.category) {
-      case 'Pending':
-        this.filteredConsultants = this.consultants.filter(consultant => consultant.ClientId);
-        break;
-      case 'FTE':
-        this.filteredConsultants = this.consultants.filter(consultant => consultant.ClientId);
-        break;
-      case 'ATO':
-        this.filteredConsultants = this.consultants.filter(consultant => !consultant.ClientId);
-        break;
-      default:
-        this.filteredConsultants = this.consultants;
+    if (this.id) {
+      // console.log('id:', this.id);
+      this.viewMode = 'new';
     }
-    console.log(this.filteredConsultants);
   }
 
   onViewChange(view: string) {
-    console.log('view:', view);
+    // console.log('view:', view);
     this.viewMode = view;
   }
 }
