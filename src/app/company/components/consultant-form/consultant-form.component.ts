@@ -9,6 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./consultant-form.component.css']
 })
 export class ConsultantFormComponent implements OnInit {
+  // tslint:disable-next-line:no-output-rename
   @Output('viewChange') viewChange = new EventEmitter<any>();
   consultant: Consultant;
   skills: any[];
@@ -28,7 +29,7 @@ export class ConsultantFormComponent implements OnInit {
     if (this.id) {
       this.consultant = this.consultantService.get(this.id);
     } else {
-      this.consultant = { 
+      this.consultant = {
         Id: '',
         FirstName: '',
         LastName: '',
@@ -38,7 +39,7 @@ export class ConsultantFormComponent implements OnInit {
         RatePerHour: null,
         SkillType: 0,
         ClientId: ''
-      }
+      };
     }
   }
 
@@ -55,7 +56,7 @@ export class ConsultantFormComponent implements OnInit {
     this.viewChange.emit('');
     this.router.navigate(['/company/consultants']);
 
-  }   
+  }
 
 
   cancel () {
