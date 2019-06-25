@@ -16,6 +16,7 @@ import { ConsultantCardComponent } from './components/consultant-card/consultant
 import { CustomFormsModule } from 'ng2-validation';
 import { MarketIconPipe } from './pipes/market-icon.pipe';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -35,10 +36,12 @@ import { RouterModule } from '@angular/router';
     FlexLayoutModule,
     FormsModule,
     CustomFormsModule,
+    HttpClientModule,
     RouterModule.forChild([])
   ],
   exports: [
     CommonModule,
+    HttpClientModule,
     MatComponentsModule,
     BrowserAnimationsModule,
     LayoutModule,

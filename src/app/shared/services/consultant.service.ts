@@ -2,14 +2,19 @@ import { Injectable } from '@angular/core';
 import { Consultant } from '../models/consultant';
 import { ConsultantSkill } from '../models/consultant-skill';
 import { MarketCategory } from '../../core/models/market-category';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { ConsultantAssetchain } from '../models/consultant-assetchain';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ConsultantService {
-  consultants: Consultant[];
+  consultants: Observable<Object>;
   marketCategories: MarketCategory[] = [];
-  constructor() { }
+  baseUrl: string = 'http://localhost:8000'; // Should make ENV variable 
+
+  constructor(private httpClient: HttpClient) { }
 
   create(consultant: Consultant) {
 
@@ -19,56 +24,62 @@ export class ConsultantService {
     return this.getHardCodedConsultants().find(consultant => consultant.Id === consultantId) ;
   }
 
+  getDemoConsultants(): Observable<ConsultantAssetchain[]> {
+    return this.httpClient.get<ConsultantAssetchain[]>(this.baseUrl + '/get_all_consultants');
+  }
+
   getConsultants() {
-    return this.getHardCodedConsultants();
+    return this.getDemoConsultants();
+    // return this.getHardCodedConsultants();
   }
 
   getConsultantSkills(): ConsultantSkill[] {
     return this.getHardCodedSkills().sort((a, b) => a.Name.localeCompare(b.Name));
   }
 
+  // TODO: Remove below method, delegate to MarketComponent.ts
   getMarketConsultants() {
     this.marketCategories = [];
     // TODO: Replace w/Http Request
     this.consultants = this.getConsultants();
 
-    // Format assets here
-    this.consultants.forEach(consultant => {
-      const marketCategory = this.marketCategories.find(category => (category.Key === consultant.SkillType));
-      // For market category purposes
-      if (this.marketCategories && marketCategory) {
-        marketCategory.Consultants.push(consultant);
-      } else {
-        this.marketCategories.push({
-          Key: consultant.SkillType,
-          AvatarUrl: '',
-          Icon: consultant.SkillType.toString(),
-          Consultants: [consultant]
-        });
-      }
-    });
+    // // Format assets here
+    // this.consultants.forEach((consultant:Consultant) => {
+    //   const marketCategory = this.marketCategories.find(category => (category.Key === consultant.SkillType));
+    //   // For market category purposes
+    //   if (this.marketCategories && marketCategory) {
+    //     marketCategory.Consultants.push(consultant);
+    //   } else {
+    //     this.marketCategories.push({
+    //       Key: consultant.SkillType,
+    //       AvatarUrl: '',
+    //       Icon: consultant.SkillType.toString(),
+    //       Consultants: [consultant]
+    //     });
+    //   }
+    // });
 
-    // Increment for market cateogry UI/UX
-    this.marketCategories.forEach(category => {
-      category.Key += 1;
-      category.Icon = category.Key.toString();
-    });
+    // // Increment for market cateogry UI/UX
+    // this.marketCategories.forEach(category => {
+    //   category.Key += 1;
+    //   category.Icon = category.Key.toString();
+    // });
 
-    // TODO: Work out logic for 'Most Reviewed' & 'Newly Added' categories
-    const mostReviewed = this.consultants;
-    const newlyAdded = this.consultants;
-    this.marketCategories.push({
-      Key: 0,
-      AvatarUrl: '',
-      Icon: '0',
-      Consultants: mostReviewed
-    });
-    this.marketCategories.push({
-      Key: 1,
-      AvatarUrl: '',
-      Icon: '1',
-      Consultants: newlyAdded
-    });
+    // // TODO: Work out logic for 'Most Reviewed' & 'Newly Added' categories
+    // const mostReviewed = this.consultants;
+    // const newlyAdded = this.consultants;
+    // this.marketCategories.push({
+    //   Key: 0,
+    //   AvatarUrl: '',
+    //   Icon: '0',
+    //   Consultants: mostReviewed
+    // });
+    // this.marketCategories.push({
+    //   Key: 1,
+    //   AvatarUrl: '',
+    //   Icon: '1',
+    //   Consultants: newlyAdded
+    // });
 
     console.log(this.marketCategories);
     return this.marketCategories.sort((a, b) => a.Key - b.Key);
@@ -116,7 +127,7 @@ export class ConsultantService {
         FirstName: 'Carlos',
         LastName: 'Rangel',
         // tslint:disable-next-line:max-line-length
-        AvatarImage: 'https://media.licdn.com/dms/image/C4E03AQFN2ftEHgSZBQ/profile-displayphoto-shrink_200_200/0?e=1558569600&v=beta&t=iWpdbQ922v2JsPuIdyxyYWgEWOh1cdQSB_k9nzjVnXI',
+        AvatarImage: 'https://media.licdn.com/dms/image/C4E03AQFN2ftEHgSZBQ/profile-displayphoto-shrink_200_200/0?e=1565827200&v=beta&t=tKWAS4NaN7nAtONwaOf94o3S8NEEjVyxQxkv3POv9Yo',
         RatePerHour: 25,
         SkillType: 1,
         Title: 'Sr. Consultant',
@@ -128,7 +139,7 @@ export class ConsultantService {
         FirstName: 'Keyur',
         LastName: 'Patel',
         // tslint:disable-next-line:max-line-length
-        AvatarImage: 'https://media.licdn.com/dms/image/C4E03AQFUl-ubR5hmhg/profile-displayphoto-shrink_800_800/0?e=1558569600&v=beta&t=-uz2TrCF78TGE8L3q-wWazRCZPO_WmCXok-Y-1Nyt9A',
+        AvatarImage: 'https://media.licdn.com/dms/image/C4E03AQFUl-ubR5hmhg/profile-displayphoto-shrink_800_800/0?e=1565827200&v=beta&t=ldiL0NJ8LddIrxBPC80OBkkXSV-zrUG_lBk9MggoxB0',
         RatePerHour: 25,
         SkillType: 5,
         Title: 'Sr. Consultant',
@@ -140,7 +151,7 @@ export class ConsultantService {
         FirstName: 'Puneet',
         LastName: 'Mittal',
         // tslint:disable-next-line:max-line-length
-        AvatarImage: 'https://media.licdn.com/dms/image/C4D03AQGRNWlTsjUZjQ/profile-displayphoto-shrink_800_800/0?e=1558569600&v=beta&t=9ZXm6tPjXvOtqSr3aUS1maSPCAAMHZCONg8i9x95lZQ',
+        AvatarImage: 'https://media.licdn.com/dms/image/C4D03AQGRNWlTsjUZjQ/profile-displayphoto-shrink_800_800/0?e=1565827200&v=beta&t=nr0Sh23JTQ0rCAp1yq-9VdJVmqNILB-n5ivEXHA_d2I',
         RatePerHour: 25,
         SkillType: 4,
         Title: 'Manager',
@@ -152,7 +163,7 @@ export class ConsultantService {
         FirstName: 'Brandon',
         LastName: 'Timmons',
         // tslint:disable-next-line:max-line-length
-        AvatarImage: 'https://media.licdn.com/dms/image/C4E03AQEYOFuiK_0_dw/profile-displayphoto-shrink_800_800/0?e=1558569600&v=beta&t=Bv8Ivkti0y1zFOakTgcv7NsV0VHwfuW5BSvcIAU2rkM',
+        AvatarImage: 'https://media.licdn.com/dms/image/C4E03AQEYOFuiK_0_dw/profile-displayphoto-shrink_800_800/0?e=1565827200&v=beta&t=tWnKALbsypCXdAeu0HJv_z0R8GvsYfb1W118dkGqT8Q',
         RatePerHour: 25,
         SkillType: 2,
         Title: 'Sr. Consultant',
@@ -164,7 +175,7 @@ export class ConsultantService {
         FirstName: 'Van',
         LastName: 'Tran',
         // tslint:disable-next-line:max-line-length
-        AvatarImage: 'https://media.licdn.com/dms/image/C5603AQFzQMMgDoCZPA/profile-displayphoto-shrink_800_800/0?e=1558569600&v=beta&t=1rgYw_vZlet8GpRVsR2BDHwg3-G5yvKUP-Pqs_cVdYc',
+        AvatarImage: 'https://media.licdn.com/dms/image/C5603AQFzQMMgDoCZPA/profile-displayphoto-shrink_800_800/0?e=1565827200&v=beta&t=gNvqBXtxOMYtQtXFDQvAphDra0m8z5To2fz00l_4sDU',
         RatePerHour: 25,
         SkillType: 5,
         Title: 'Sr. Consultant',
@@ -176,7 +187,7 @@ export class ConsultantService {
         FirstName: 'Darshan',
         LastName: 'Patel',
         // tslint:disable-next-line:max-line-length
-        AvatarImage: 'https://media.licdn.com/dms/image/C5103AQEDqvKYESdOcA/profile-displayphoto-shrink_800_800/0?e=1558569600&v=beta&t=yfZTDWNC9ReObSYctn7ZgRm-hPBgsW6zv_8LHwwdmPs',
+        AvatarImage: 'https://media.licdn.com/dms/image/C5103AQEDqvKYESdOcA/profile-displayphoto-shrink_800_800/0?e=1565827200&v=beta&t=KwE8aFPbb4K-6UF0nX-XP0S6C9iAFy3KM8sj74mVsqo',
         RatePerHour: 25,
         SkillType: 2,
         Title: 'Sr. Consultant',
