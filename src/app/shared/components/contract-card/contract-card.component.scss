@@ -1,0 +1,55 @@
+@import "../../../../variables";
+
+.asset-container {
+    background: #333;
+    padding: 2% 2% 0 2%;
+    border-radius: 5px;
+}
+
+.asset-icon-container {
+    top: 5px;
+    right: 10px;
+    position: absolute;
+    color: $edit;
+    padding: 2px 2px 0px;
+    background: #333;
+    opacity: .9;
+    border-radius: 5px
+}
+
+.img {
+    width: 100%;
+    margin-bottom: 18%;
+  }
+  .card-picture {
+    width: 27%;
+    // max-width: 350px;
+    margin-bottom: 2%;
+  }
+  .card-picture:hover{
+    cursor: pointer;
+    box-shadow: 0 0 3px 3px rgba(20,23,28,0.1), 0 3px 1px 0 rgba(20,23,28,0.1);
+  }
+  .container {
+    min-height: 100%;
+    width: 100%;
+  }
+  .search-form {
+     /* width: 90%; */
+  }
+
+button {
+    height: 100%;
+    margin-top: 9px;
+    margin-left: 10px
+}
+
+// .requirement-radio-group {
+//   display: flex;
+//   flex-direction: column;
+//   margin: 15px 0;
+// }
+
+// .requirement-radio-button {
+//   margin: 5px;
+// }

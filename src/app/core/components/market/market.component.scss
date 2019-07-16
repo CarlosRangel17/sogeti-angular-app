@@ -66,3 +66,17 @@
   ::ng-deep .selected-header > .mat-expansion-indicator:after {
     color: white !important;
   }
+
+.mat-list-item[aria-selected="true"] {
+  background-color: $accent;
+  color: $app-white;
+}
+
+.market-contract-type {
+  cursor: pointer;
+}
+.selected-contract-type {
+  background-color: $accent;
+  color: $app-white;
+
+}

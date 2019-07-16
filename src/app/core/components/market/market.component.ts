@@ -1,55 +1,107 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ConsultantService } from '../../../shared/services/consultant.service';
 import { MarketCategory } from '../../models/market-category';
 import { Consultant } from 'src/app/shared/models/consultant';
 import { ConsultantAssetchain } from 'src/app/shared/models/consultant-assetchain';
+import { SOWContractService } from 'src/app/shared/services/sowcontract.service.';
+import { ContractAssetchain } from 'src/app/shared/models/contract-assetchain';
+import { Contract, ModelType } from 'src/app/shared/models/contract';
+import { ContractType } from 'src/app/shared/models/contract-type';
 
 @Component({
   selector: 'app-market',
   templateUrl: './market.component.html',
   styleUrls: ['./market.component.scss']
 })
-export class MarketComponent {
+export class MarketComponent implements OnInit {
   @Input('is-admin') isAdmin: boolean = false;
   filteredAssetCategories: MarketCategory[] = [];
   assetCategories: MarketCategory[] = [];
   marketCategories: MarketCategory[] = [];
-  contracts: any[] = [];
+  sowContracts: Contract[] = [];
+  contractTypes: ContractType[] = [];
   consultants: Consultant[] = [];
   viewMode = 'contracts';
   panelOpenState = false;
   contractView = 'All';
+  selectedContractType = "All";
 
-  constructor(private consultantService: ConsultantService) {
+  constructor(
+    private consultantService: ConsultantService,
+    private sowContractService: SOWContractService
+  ) {
 
+    // Get SOW Contracts
+    this.sowContractService.getContracts().subscribe((s) => {
+      console.log('*** BEGIN ITERATING OVER CONTRACT ASSETS ***');
+
+      s.forEach((asset: ContractAssetchain) => {
+
+        // Assign consultant ID from Blockchain TRX Id 
+        asset.Record.Id = asset.Key;
+        this.sowContracts.push(new Contract(ModelType.JSON, asset));
+      });
+
+      console.log('contracts:', this.sowContracts);
+    });
+
+    // Get Consultants
     this.consultantService.getConsultants().subscribe((c) => {
-      
-      console.log('c:', c);
+
+      // console.log('c:', c);
       this.marketCategories = [];
 
+      // Provide default categories: 'Most Reviewed' & 'Recently Added'
+      this.marketCategories.push({
+        Key: 0,
+        AvatarUrl: '',
+        Icon: '0',
+        Consultants: []
+      });
+      this.marketCategories.push({
+        Key: 1,
+        AvatarUrl: '',
+        Icon: '1',
+        Consultants: []
+      });
+
       // Format assets here
-      c.forEach((asset:ConsultantAssetchain) => {
+      c.forEach((asset: ConsultantAssetchain) => {
 
-        console.log('consultant:', asset);
+        // console.log('*** BEGIN ITERATING OVER CONSULTANT ASSETS ***');
 
-        const marketCategory = this.marketCategories.find(category => (category.Key === asset.Record.SkillType));
-        // For market category purposes
-        if (this.marketCategories && marketCategory) {
+        // Assign consultant ID from Blockchain TRX Id 
+        asset.Record.Id = asset.Key;
+
+        // Check if market categories contains the asset's skilltype 
+        let marketCategory = this.marketCategories.find(category => category.Key === +asset.Record.SkillType);
+
+        if (marketCategory) {
+          // Found matching category 
           marketCategory.Consultants.push(asset.Record);
+
         } else {
 
-          // Compile the Consultants returned
+          // Add consultants to master list 
           this.consultants.push(asset.Record);
 
           // Compile the Market Categories 
           this.marketCategories.push({
-            Key: asset.Record.SkillType,
+            Key: +asset.Record.SkillType, // the '+' unary operator converts string to int 
             AvatarUrl: '',
             Icon: asset.Record.SkillType.toString(),
             Consultants: [asset.Record]
           });
         }
-      });
+
+        // Add to Recently Added
+        this.marketCategories.find(x => x.Key === 0).Consultants.push(asset.Record);
+
+        // Add to Most Reviewed 
+        this.marketCategories.find(x => x.Key === 1).Consultants.push(asset.Record);
+
+        // console.log("*** END ITERATION ***");
+      }); // End formatting assets 
 
       // Increment for market cateogry UI/UX
       this.marketCategories.forEach(category => {
@@ -57,37 +109,26 @@ export class MarketComponent {
         category.Icon = category.Key.toString();
       });
 
-      console.log('marketCategories:', this.marketCategories);
-      // TODO: Work out logic for 'Most Reviewed' & 'Newly Added' categories
-      // - const mostReviewed = c;
-      // - const newlyAdded = c;
-      this.marketCategories.push({
-        Key: 0,
-        AvatarUrl: '',
-        Icon: '0',
-        Consultants: this.consultants
-      });
-      this.marketCategories.push({
-        Key: 1,
-        AvatarUrl: '',
-        Icon: '1',
-        Consultants: this.consultants
-      });
-
-      
       return this.filteredAssetCategories = this.assetCategories = this.marketCategories;
     });
-
-    this.contracts = [ 
-      { Key: 'All', Description: 'All Requested Srvs.' }, 
-      { Key: 'Blockchain', Description: 'Blockchain Srvs.' }, 
-      { Key: 'BA', Description: 'Business Analytics Srvs.' }, 
-      { Key: 'Cloud', Description: 'Cloud Srvs.' }, 
-      { Key: 'Mobile', Description: 'Mobile Srvs.' },
-      { Key: 'Web', Description: 'Web Srvs.' }
-    ];
   }
-  
+
+  ngOnInit() {
+    this.contractTypes = [
+      { Key: 'All', Description: 'All Requested Srvs.', Icon: 'star' },
+      { Key: 'Blockchain', Description: 'Blockchain Srvs.', Icon: 'code' },
+      { Key: 'BA', Description: 'Business Analytics Srvs.', Icon: 'bar_chart' },
+      { Key: 'Cloud', Description: 'Cloud Srvs.', Icon: 'cloud' },
+      { Key: 'Mobile', Description: 'Mobile Srvs.', Icon: 'smartphone' },
+      { Key: 'Web', Description: 'Web Srvs.', Icon: 'web' }
+    ]
+  }
+
+  onContractTypeSelect(contractType) {
+    console.log(contractType);
+    this.selectedContractType = contractType.Key;
+  }
+
   formatLabel(value: number | null) {
     if (!value) {
       return 0;

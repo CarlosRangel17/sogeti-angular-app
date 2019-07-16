@@ -1,0 +1,80 @@
+<mat-card class="card-picture" *ngIf="contract.Description" [style.width]="fullWidth ? '90%': '50%'">
+
+  <img *ngIf="consultant && consultant.AvatarImage" mat-card-image [src]="consultant.AvatarImage">
+  <mat-card-title [style.font-size]="'12px'" fxLayout.gt-xs="row wrap" fxLayout.xs="column">
+    <span fxLayoutAlign="space-between" fxFlex="100" [style.margin-top]="'25px'">
+      <span>{{ 'Created: ' + contract.DateCreated }}</span>
+      <span>${{ contract.RatePerHour }}/Hr</span>
+    </span>
+    <span 
+      [style.margin]="'15px'" 
+      [style.font-size]="'14px'" 
+      fxLayoutAlign="center" 
+      fxFlex>
+        <strong>{{contract.Description }}</strong> 
+    </span>
+    
+      <span 
+      fxLayoutAlign="center" 
+      fxFlex="100"
+      fxLayout="column">
+        <span [style.margin-bottom]="'15px'">
+          Requirements:
+        </span>
+        <mat-radio-group
+        aria-labelledby="requirement-radio-group-label"
+        class="requirement-radio-group"
+        *ngFor="let service of contract.Services" 
+        [(ngModel)]="favoriteService">
+          <!-- [checked]="true"-->
+          <mat-radio-button 
+            disabled
+            [style.margin-bottom]="'15px'"
+            fxLayoutAlign="start" 
+            class="requirement-radio-button">
+            {{service.Description}}
+          </mat-radio-button>
+        </mat-radio-group>
+      </span>
+     <span fxLayoutAlign="space-between" fxFlex="100">
+        <span
+        fxLayoutAlign="center" 
+        fxFlex="100"
+        fxLayout="column">
+          <span [style.margin-bottom]="'15px'">
+                Start to End Date:
+          </span>
+          <span>{{ contract.TermStartDate + (contract.TermEndDate ? '-' + contract.TermEndDate : ' to __________') }}</span>
+        </span>
+        <span
+          fxLayoutAlign="center" 
+          fxFlex="100"
+          fxLayout="column">
+              <span [style.margin-bottom]="'15px'" 
+                fxFlexAlign="end">
+                  Srvs.
+                </span>
+                <span
+                fxFlexAlign="end">
+                <ng-container *ngFor="let service of contract.Services">
+                    <mat-icon>{{ service.Key | icon }}</mat-icon>
+                  </ng-container>
+              </span>
+          </span>
+     </span>
+      <div *ngIf="showActions" class="asset-icon-container" (click)="viewFilter('edit')"
+        [routerLink]="['/company/contracts/', contract.Id]">
+        <mat-icon>mode_edit</mat-icon>
+        <!-- <mat-icon fxFlex="10%">delete</mat-icon> -->
+      </div>
+  </mat-card-title>
+  <ng-container *ngIf="showMarketActions">
+    <mat-divider></mat-divider>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="end center">
+      <button [style.padding]="'0px'" color="primary" mat-button>
+        <mat-icon>person_add</mat-icon>
+        Request
+      </button>
+    </mat-card-actions>
+  </ng-container>
+</mat-card>

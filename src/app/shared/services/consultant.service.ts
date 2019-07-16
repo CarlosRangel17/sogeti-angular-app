@@ -21,7 +21,7 @@ export class ConsultantService {
   }
 
   get(consultantId: string) {
-    return this.getHardCodedConsultants().find(consultant => consultant.Id === consultantId) ;
+    return this.getHardCodedConsultants().find(consultant => consultant.Id === consultantId);
   }
 
   getDemoConsultants(): Observable<ConsultantAssetchain[]> {
@@ -35,54 +35,6 @@ export class ConsultantService {
 
   getConsultantSkills(): ConsultantSkill[] {
     return this.getHardCodedSkills().sort((a, b) => a.Name.localeCompare(b.Name));
-  }
-
-  // TODO: Remove below method, delegate to MarketComponent.ts
-  getMarketConsultants() {
-    this.marketCategories = [];
-    // TODO: Replace w/Http Request
-    this.consultants = this.getConsultants();
-
-    // // Format assets here
-    // this.consultants.forEach((consultant:Consultant) => {
-    //   const marketCategory = this.marketCategories.find(category => (category.Key === consultant.SkillType));
-    //   // For market category purposes
-    //   if (this.marketCategories && marketCategory) {
-    //     marketCategory.Consultants.push(consultant);
-    //   } else {
-    //     this.marketCategories.push({
-    //       Key: consultant.SkillType,
-    //       AvatarUrl: '',
-    //       Icon: consultant.SkillType.toString(),
-    //       Consultants: [consultant]
-    //     });
-    //   }
-    // });
-
-    // // Increment for market cateogry UI/UX
-    // this.marketCategories.forEach(category => {
-    //   category.Key += 1;
-    //   category.Icon = category.Key.toString();
-    // });
-
-    // // TODO: Work out logic for 'Most Reviewed' & 'Newly Added' categories
-    // const mostReviewed = this.consultants;
-    // const newlyAdded = this.consultants;
-    // this.marketCategories.push({
-    //   Key: 0,
-    //   AvatarUrl: '',
-    //   Icon: '0',
-    //   Consultants: mostReviewed
-    // });
-    // this.marketCategories.push({
-    //   Key: 1,
-    //   AvatarUrl: '',
-    //   Icon: '1',
-    //   Consultants: newlyAdded
-    // });
-
-    console.log(this.marketCategories);
-    return this.marketCategories.sort((a, b) => a.Key - b.Key);
   }
 
   update(consultant: Consultant) {
@@ -131,7 +83,10 @@ export class ConsultantService {
         RatePerHour: 25,
         SkillType: 1,
         Title: 'Sr. Consultant',
-        ClientId: ''
+        ClientId: '',
+        jsonMap: Consultant.prototype.jsonMap,
+        arrayMap: Consultant.prototype.arrayMap,
+        stringMap: Consultant.prototype.stringMap
       },
       {
         Id: '2',
@@ -143,7 +98,10 @@ export class ConsultantService {
         RatePerHour: 25,
         SkillType: 5,
         Title: 'Sr. Consultant',
-        ClientId: ''
+        ClientId: '',
+        jsonMap: Consultant.prototype.jsonMap,
+        arrayMap: Consultant.prototype.arrayMap,
+        stringMap: Consultant.prototype.stringMap
       },
       {
         Id: '3',
@@ -155,7 +113,10 @@ export class ConsultantService {
         RatePerHour: 25,
         SkillType: 4,
         Title: 'Manager',
-        ClientId: ''
+        ClientId: '',
+        jsonMap: Consultant.prototype.jsonMap,
+        arrayMap: Consultant.prototype.arrayMap,
+        stringMap: Consultant.prototype.stringMap
       },
       {
         Id: '4',
@@ -167,7 +128,10 @@ export class ConsultantService {
         RatePerHour: 25,
         SkillType: 2,
         Title: 'Sr. Consultant',
-        ClientId: ''
+        ClientId: '',
+        jsonMap: Consultant.prototype.jsonMap,
+        arrayMap: Consultant.prototype.arrayMap,
+        stringMap: Consultant.prototype.stringMap
       },
       {
         Id: '5',
@@ -179,7 +143,10 @@ export class ConsultantService {
         RatePerHour: 25,
         SkillType: 5,
         Title: 'Sr. Consultant',
-        ClientId: ''
+        ClientId: '',
+        jsonMap: Consultant.prototype.jsonMap,
+        arrayMap: Consultant.prototype.arrayMap,
+        stringMap: Consultant.prototype.stringMap
       },
       {
         Id: '6',
@@ -191,7 +158,10 @@ export class ConsultantService {
         RatePerHour: 25,
         SkillType: 2,
         Title: 'Sr. Consultant',
-        ClientId: ''
+        ClientId: '',
+        jsonMap: Consultant.prototype.jsonMap,
+        arrayMap: Consultant.prototype.arrayMap,
+        stringMap: Consultant.prototype.stringMap
       }
     ];
   }

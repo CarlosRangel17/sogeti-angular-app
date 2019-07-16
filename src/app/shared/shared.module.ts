@@ -17,6 +17,7 @@ import { CustomFormsModule } from 'ng2-validation';
 import { MarketIconPipe } from './pipes/market-icon.pipe';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { ContractCardComponent } from './components/contract-card/contract-card.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     IconPipe,
     MarketIconPipe,
     ZippyComponent,
-    ConsultantCardComponent
+    ConsultantCardComponent,
+    ContractCardComponent
   ],
   imports: [
     CommonModule,
@@ -55,6 +57,7 @@ import { HttpClientModule } from '@angular/common/http';
     ZippyComponent,
     ReactiveFormsModule,
     ConsultantCardComponent,
+    ContractCardComponent,
     FormsModule,
     CustomFormsModule
   ],

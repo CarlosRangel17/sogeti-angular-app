@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
 import { Consultant } from 'src/app/shared/models/consultant';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
 
@@ -7,9 +7,13 @@ import { MatTableDataSource, MatPaginator } from '@angular/material';
   templateUrl: './manage-consultants.component.html',
   styleUrls: ['./manage-consultants.component.css']
 })
-export class ManageConsultantsComponent implements OnInit {
+export class ManageConsultantsComponent implements OnInit, OnChanges {
+  private _consultants: Consultant[];
   // tslint:disable-next-line:no-input-rename
-  @Input('consultants') consultants: Consultant[] = [];
+  @Input('consultants') set consultants(value: Consultant[]) {
+    this._consultants = value;
+    console.log(this._consultants);
+  }
   // tslint:disable-next-line:no-output-rename
   @Output('viewChange') viewChange = new EventEmitter<any>();
 
@@ -19,12 +23,22 @@ export class ManageConsultantsComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   constructor() { 
-    this.filteredConsultants = this.consultants;
+    console.log('constructor:', this._consultants);
+    this.dataSource = new MatTableDataSource<Consultant>(this._consultants);
+    this.dataSource.paginator = this.paginator;
+    this.filteredConsultants = this._consultants;
   }
 
   ngOnInit() {
-    // console.log('ngOnInit:', this.consultants);
-    this.dataSource = new MatTableDataSource<Consultant>(this.consultants);
+    console.log('ngOnInit:', this._consultants);
+    this.dataSource = new MatTableDataSource<Consultant>(this._consultants);
+    this.dataSource.paginator = this.paginator;
+    this.filteredConsultants = this._consultants;
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('changes detected');
+    this.dataSource = new MatTableDataSource<Consultant>(changes.consultants.currentValue);
     this.dataSource.paginator = this.paginator;
   }
 
@@ -32,19 +46,19 @@ export class ManageConsultantsComponent implements OnInit {
     // console.log('apply:', this.category);
     switch (category) {
       case 'Pending':
-        this.filteredConsultants = this.consultants.filter(consultant => consultant.ClientId);
+        this.filteredConsultants = this._consultants.filter(consultant => consultant.ClientId);
     break;
       case 'FTE':
-        this.filteredConsultants = this.consultants.filter(consultant => consultant.ClientId);
+        this.filteredConsultants = this._consultants.filter(consultant => consultant.ClientId);
         break;
       case 'ATO':
-        this.filteredConsultants = this.consultants.filter(consultant => !consultant.ClientId);
+        this.filteredConsultants = this._consultants.filter(consultant => !consultant.ClientId);
         break;
       default:
-        this.filteredConsultants = this.consultants;
+        this.filteredConsultants = this._consultants;
     }
     this.dataSource = new MatTableDataSource<Consultant>(this.filteredConsultants);
-    console.log(this.filteredConsultants);
+    console.log('filtered', this.filteredConsultants);
   }
 
   viewFilter(view) {

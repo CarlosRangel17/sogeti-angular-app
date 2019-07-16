@@ -38,7 +38,10 @@ export class ConsultantFormComponent implements OnInit {
         Title: '',
         RatePerHour: null,
         SkillType: 0,
-        ClientId: ''
+        ClientId: '',
+        jsonMap: Consultant.prototype.jsonMap,
+        arrayMap: Consultant.prototype.arrayMap,
+        stringMap: Consultant.prototype.stringMap
       };
     }
   }

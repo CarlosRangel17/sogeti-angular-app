@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Consultant, ModelType } from 'src/app/shared/models/consultant';
 import { ConsultantService } from 'src/app/shared/services/consultant.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ConsultantAssetchain } from 'src/app/shared/models/consultant-assetchain';
 
 @Component({
   selector: 'app-company-consultants',
@@ -19,17 +20,25 @@ export class CompanyConsultantsComponent implements OnInit {
     private router: Router,
     private consultantService: ConsultantService
     ) {
-      // TODOD: switchMap & .subscribe & applyFilter | see products.component.ts (organic-shop)
-    this.consultantService.getDemoConsultants().subscribe(res => {
-      // res => json response from blockchain 
-      let tmpConsultant = new Consultant(ModelType.JSON, res);
-      //TODO: Convert the returned blockchain records to consultant models 
-      this.consultants.push(tmpConsultant); 
-    });
-    // this.router.events.subscribe(() => {
-    //   console.log('id:', this.route.snapshot.paramMap.get('id'));
-    //   this.id = this.route.snapshot.paramMap.get('id');
-    // });
+      this.consultantService.getConsultants().subscribe(res => {
+
+        console.log('*** BEGIN ITERATING OVER BLOCKCHAIN ASSETS ***');
+
+        // Format assets here
+        res.forEach((asset:ConsultantAssetchain) => this.consultants.push(new Consultant(ModelType.JSON, asset))); 
+        // End formatting assets
+
+        console.log(this.consultants);
+
+        console.log("*** END ITERATION ***");
+      });
+
+      console.log(this.consultants);
+
+      // this.router.events.subscribe(() => {
+      //   console.log('id:', this.route.snapshot.paramMap.get('id'));
+      //   this.id = this.route.snapshot.paramMap.get('id');
+      // });
   }
 
   ngOnInit() {

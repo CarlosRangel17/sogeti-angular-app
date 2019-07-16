@@ -16,8 +16,40 @@
   <ng-container [ngSwitch]="viewMode">
     <!-- [ngSwitch]="viewMode"-->
 
+    <!-- Curent SOW Contracts -->
     <ng-container *ngSwitchCase="'contracts'">
-      <mat-accordion fxFlex="30">
+      <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="15px" fxFlexFill>
+      
+        <!-- Market Service Types -->
+        <mat-list fxFlex="33%">
+          <mat-list-item *ngFor="let contractType of contractTypes" class="market-contract-type"
+            [class.selected-contract-type]="contractType.Key == selectedContractType"
+            (click)="onContractTypeSelect(contractType)">
+            <mat-icon matListIcon>{{contractType.Icon}}</mat-icon>
+            <h3 matLine> {{contractType.Description}} </h3>
+          </mat-list-item>
+        </mat-list>
+      
+        <!-- SOW Contracts -->
+        <div class="asset-container" 
+          fxLayout="row wrap" 
+          fxLayout.xs="column" 
+          fxLayoutAlign="flex-start"
+          fxFlexFill
+          fxFlex="66%">
+
+          <ng-container *ngFor="let contract of sowContracts">
+            <app-contract-card 
+              fxFlex="50%"
+              [contract]="contract" 
+              [showActions]="isAdmin" 
+              [showMarketActions]="!isAdmin"
+              [full-width]="true"
+              ></app-contract-card>
+          </ng-container>
+        </div>
+      </div>
+      <!-- <mat-accordion fxFlex="30">
           <mat-expansion-panel *ngFor="let contract of contracts">
             <mat-expansion-panel-header 
               
@@ -35,20 +67,17 @@
             </div>
 
           </mat-expansion-panel>
-        </mat-accordion>
+        </mat-accordion> -->
     </ng-container>
+
+    <!-- Consultant Market -->
     <ng-container *ngSwitchDefault>
       <div class="filter-section" fxFlex="100">
         <app-market-filter [categories]="assetCategories" (filtered)="onFilter($event)"></app-market-filter>
       </div>
 
-      <zippy 
-        *ngFor="let assetCategory of filteredAssetCategories" 
-        [title]="assetCategory.Key | marketCategory"
-        [icon]="assetCategory.Icon | marketIcon" 
-        [assets]="assetCategory.Consultants" 
-        [is-admin]="isAdmin" 
-        fxFlex="100">
+      <zippy *ngFor="let assetCategory of filteredAssetCategories" [title]="assetCategory.Key | marketCategory"
+        [icon]="assetCategory.Icon | marketIcon" [assets]="assetCategory.Consultants" [is-admin]="isAdmin" fxFlex="100">
       </zippy>
     </ng-container>
   </ng-container>
