@@ -20,25 +20,25 @@ export class CompanyConsultantsComponent implements OnInit {
     private router: Router,
     private consultantService: ConsultantService
     ) {
+
       this.consultantService.getConsultants().subscribe(res => {
+      // });
+
 
         console.log('*** BEGIN ITERATING OVER BLOCKCHAIN ASSETS ***');
-
         // Format assets here
+
         res.forEach((asset:ConsultantAssetchain) => this.consultants.push(new Consultant(ModelType.JSON, asset))); 
-        // End formatting assets
-
-        console.log(this.consultants);
-
-        console.log("*** END ITERATION ***");
-      });
-
-      console.log(this.consultants);
-
+      //   this.id = this.route.snapshot.paramMap.get('id');
       // this.router.events.subscribe(() => {
       //   console.log('id:', this.route.snapshot.paramMap.get('id'));
-      //   this.id = this.route.snapshot.paramMap.get('id');
-      // });
+
+      console.log(this.consultants);
+      });
+        console.log("*** END ITERATION ***");
+
+        console.log(this.consultants);
+        // End formatting assets
   }
 
   ngOnInit() {

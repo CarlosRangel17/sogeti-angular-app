@@ -4,8 +4,8 @@ import { MarketCategory } from '../../models/market-category';
 import { Consultant } from 'src/app/shared/models/consultant';
 import { ConsultantAssetchain } from 'src/app/shared/models/consultant-assetchain';
 import { SOWContractService } from 'src/app/shared/services/sowcontract.service.';
-import { ContractAssetchain } from 'src/app/shared/models/contract-assetchain';
 import { Contract, ModelType } from 'src/app/shared/models/contract';
+import { ContractAssetchain } from 'src/app/shared/models/contract-assetchain';
 import { ContractType } from 'src/app/shared/models/contract-type';
 
 @Component({
@@ -18,8 +18,8 @@ export class MarketComponent implements OnInit {
   filteredAssetCategories: MarketCategory[] = [];
   assetCategories: MarketCategory[] = [];
   marketCategories: MarketCategory[] = [];
-  sowContracts: Contract[] = [];
   contractTypes: ContractType[] = [];
+  sowContracts: Contract[] = [];
   consultants: Consultant[] = [];
   viewMode = 'contracts';
   panelOpenState = false;
@@ -32,85 +32,55 @@ export class MarketComponent implements OnInit {
   ) {
 
     // Get SOW Contracts
-    this.sowContractService.getContracts().subscribe((s) => {
-      console.log('*** BEGIN ITERATING OVER CONTRACT ASSETS ***');
-
       s.forEach((asset: ContractAssetchain) => {
+      console.log('*** BEGIN ITERATING OVER CONTRACT ASSETS ***');
+    this.sowContractService.getContracts().subscribe((s) => {
 
-        // Assign consultant ID from Blockchain TRX Id 
-        asset.Record.Id = asset.Key;
-        this.sowContracts.push(new Contract(ModelType.JSON, asset));
-      });
-
-      console.log('contracts:', this.sowContracts);
-    });
-
-    // Get Consultants
-    this.consultantService.getConsultants().subscribe((c) => {
 
       // console.log('c:', c);
+
+
+        asset.Record.Id = asset.Key;
+        // Assign consultant ID from Blockchain TRX Id 
+      });
+        this.sowContracts.push(new Contract(ModelType.JSON, asset));
+    });
+      console.log('contracts:', this.sowContracts);
+    // Get Consultants
+
+    this.consultantService.getConsultants().subscribe((c) => {
+      this.marketCategories.push({
+        Icon: '0',
+      this.marketCategories.push({
       this.marketCategories = [];
 
       // Provide default categories: 'Most Reviewed' & 'Recently Added'
-      this.marketCategories.push({
+        AvatarUrl: '',
         Key: 0,
-        AvatarUrl: '',
-        Icon: '0',
         Consultants: []
       });
-      this.marketCategories.push({
         Key: 1,
-        AvatarUrl: '',
         Icon: '1',
-        Consultants: []
+        AvatarUrl: '',
       });
+        Consultants: []
 
-      // Format assets here
       c.forEach((asset: ConsultantAssetchain) => {
-
+      // Format assets here
         // console.log('*** BEGIN ITERATING OVER CONSULTANT ASSETS ***');
 
         // Assign consultant ID from Blockchain TRX Id 
+
         asset.Record.Id = asset.Key;
 
         // Check if market categories contains the asset's skilltype 
-        let marketCategory = this.marketCategories.find(category => category.Key === +asset.Record.SkillType);
 
-        if (marketCategory) {
           // Found matching category 
-          marketCategory.Consultants.push(asset.Record);
-
-        } else {
-
-          // Add consultants to master list 
-          this.consultants.push(asset.Record);
-
-          // Compile the Market Categories 
-          this.marketCategories.push({
+        let marketCategory = this.marketCategories.find(category => category.Key === +asset.Record.SkillType);
+          });
             Key: +asset.Record.SkillType, // the '+' unary operator converts string to int 
-            AvatarUrl: '',
             Icon: asset.Record.SkillType.toString(),
             Consultants: [asset.Record]
-          });
-        }
-
-        // Add to Recently Added
-        this.marketCategories.find(x => x.Key === 0).Consultants.push(asset.Record);
-
-        // Add to Most Reviewed 
-        this.marketCategories.find(x => x.Key === 1).Consultants.push(asset.Record);
-
-        // console.log("*** END ITERATION ***");
-      }); // End formatting assets 
-
-      // Increment for market cateogry UI/UX
-      this.marketCategories.forEach(category => {
-        category.Key;
-        category.Icon = category.Key.toString();
-      });
-
-      return this.filteredAssetCategories = this.assetCategories = this.marketCategories;
-    });
   }
 
   ngOnInit() {
